@@ -1,10 +1,8 @@
-import "./globals.css";
-import Script from 'next/script';
-import { Analytics } from "@vercel/analytics/react";
-import cx from "classnames";
-import { sfPro, inter } from "./fonts";
 import Nav from "@/components/layout/nav";
+import { Analytics } from "@vercel/analytics/react";
+import Script from 'next/script';
 import { Suspense } from "react";
+import "./globals.css";
 
 export const metadata = {
   title: "My First Project",
@@ -40,15 +38,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <Script id="safari-viewport-fix">{IOS_SAFARI_VIEWPORT_UNIT_CORRECTION}</Script>
-      <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
+      <body className="font-serif"
+      // {cx(sfPro.variable, inter.variable)}
+      >
+        <div className="fixed h-screen w-full bg-orange-100" />
         <Suspense fallback="...">
           <Nav />
         </Suspense>
         <main className="flex min-h-screen w-full flex-col items-center justify-center pt-16 relative">
           {children}
         </main>
-        <Analytics />
+        <Analytics />        
       </body>
     </html>
   );

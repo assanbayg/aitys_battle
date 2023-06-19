@@ -1,8 +1,8 @@
 "use client";
 
+import useScroll from "@/lib/hooks/use-scroll";
 import Image from "next/image";
 import Link from "next/link";
-import useScroll from "@/lib/hooks/use-scroll";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 
@@ -22,14 +22,23 @@ export default function NavBar({ session }) {
         <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
           <Link href="/" className="flex items-center font-display text-2xl">
             <Image
-              src="/n17r.png"
-              alt="N17R logo"
-              width="30"
-              height="30"
+              src="/dombra.png"
+              alt="Dombra logo"
+              width="35"
+              height="35"
               className="mr-2 rounded-sm"
             ></Image>
-            <p>My First Project</p>
+            <p>Aitys Battle</p>
           </Link>
+          <nav>
+          <ul className="flex space-x-4">
+            <li><a href="#" className="text-brown">Home</a></li>
+            <li><a href="#" className="text-brown">About</a></li>
+            <li><a href="#" className="text-brown">How It Works</a></li>
+            <li><a href="#" className="text-brown">Historical Figures</a></li>
+            <li><a href="#" className="text-brown">Contact</a></li>
+          </ul>
+        </nav>
           <div>
             {session ? (
               <UserDropdown session={session} />

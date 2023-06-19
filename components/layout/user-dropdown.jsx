@@ -1,12 +1,11 @@
 "use client";
 
-import { Fragment } from "react";
+import { Menu, Transition } from '@headlessui/react';
+import { ArrowRightOnRectangleIcon } from '@heroicons/react/20/solid';
+import cx from 'classnames';
 import { signOut } from "next-auth/react";
-import { ArrowRightOnRectangleIcon } from '@heroicons/react/20/solid'
 import Image from "next/image";
-import { Menu, Transition } from '@headlessui/react'
-import { Session } from "next-auth";
-import cx from 'classnames'
+import { Fragment } from "react";
 
 export default function UserDropdown({ session }) {
   const { email, image } = session?.user || {};
