@@ -1,10 +1,12 @@
 
 import Balancer from "react-wrap-balancer";
+import Features from "./features";
+import HistoricalFiguresScroll from "./historica-figures-scroll";
 
 export default function Landing() {
   return (
     <>
-      <div className="z-10 w-full max-w-xl px-3 xl:px-0">
+      <div className="z-10 w-full max-w-xl px-3 xl:px-0 my-16">
         <h1
           className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
@@ -19,9 +21,11 @@ export default function Landing() {
             Discover the Art of Verbal Jousting with AI-powered Kazakh Legends.    
           </Balancer>
 
-        <button className="bg-yellow-700 text-amber-50 px-6 py-2 mt-8 text-xl rounded">Start Aitys</button>
+        <button className="bg-yellow-700 text-amber-50 px-6 py-2 mt-8 text-xl rounded-full">Start Aitys</button>
         </p>
       </div>
+      <Features />
+      <HistoricalFiguresScroll/>
     </>
   )
 }

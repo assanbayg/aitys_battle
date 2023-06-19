@@ -16,7 +16,7 @@ export default function NavBar({ session }) {
       <div
         className={`fixed top-0 w-full ${scrolled
           ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
-          : "bg-white/0"
+          : "bg-yellow-700 text-amber-50"
           } z-30 transition-all`}
       >
         <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
@@ -32,11 +32,11 @@ export default function NavBar({ session }) {
           </Link>
           <nav>
           <ul className="flex space-x-4">
-            <li><a href="#" className="text-brown">Home</a></li>
-            <li><a href="#" className="text-brown">About</a></li>
-            <li><a href="#" className="text-brown">How It Works</a></li>
-            <li><a href="#" className="text-brown">Historical Figures</a></li>
-            <li><a href="#" className="text-brown">Contact</a></li>
+            <li><a href="#" >Home</a></li>
+            <li><a href="#" >About</a></li>
+            <li><a href="#" >How It Works</a></li>
+            <li><a href="#" >Historical Figures</a></li>
+            <li><a href="#" >Contact</a></li>
           </ul>
         </nav>
           <div>
@@ -44,7 +44,7 @@ export default function NavBar({ session }) {
               <UserDropdown session={session} />
             ) : (
               <button
-                className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+                className="rounded-full bg-yellow-800 p-1.5 px-4 text-sm text-amber-50 transition-all hover:bg-white hover:text-black"
                 onClick={() => setShowSignInModal(true)}
               >
                 Sign In
