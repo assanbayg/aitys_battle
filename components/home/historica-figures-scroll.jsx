@@ -24,9 +24,9 @@ const HistoricalFigures = () => {
   ];
 
   return (
-    <section className="bg-beige py-8">
+    <section className="py-8">
       <div className="container mx-auto">
-        <h3 className="text-4xl font-serif text-center mb-8">Historical Figures</h3>
+        <h3 className="text-4xl text-center mb-8">Historical Figures</h3>
         <div className="flex overflow-x-auto space-x-4">
           {figures.map((figure, index) => (
             <div key={index} className="max-w-sm">

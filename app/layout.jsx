@@ -6,9 +6,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata = {
-  title: "My First Project",
+  title: "Aitys battle",
   description:
-    "Meet your AI Jeopardy expert.",
+    "Battle .",
   themeColor: "#FFF",
 };
 

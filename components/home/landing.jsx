@@ -25,7 +25,7 @@ export default function Landing() {
         </p>
       </div>
       <Features />
-      <HistoricalFiguresScroll/>
+      <HistoricalFiguresScroll id="figures"/>
     </>
   )
 }

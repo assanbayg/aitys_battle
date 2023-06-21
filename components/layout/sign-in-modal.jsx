@@ -1,13 +1,13 @@
+import { Google, LoadingDots } from "@/components/shared/icons";
+import { Dialog, Transition } from '@headlessui/react';
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 import {
-  useState,
+  Fragment,
   useCallback,
   useMemo,
-  Fragment
+  useState
 } from "react";
-import { LoadingDots, Google } from "@/components/shared/icons";
-import Image from "next/image";
-import { Dialog, Transition } from '@headlessui/react'
 
 const SignInModal = ({
   showSignInModal,
@@ -44,7 +44,7 @@ const SignInModal = ({
               <Dialog.Panel className="w-full overflow-hidden shadow-xl md:max-w-md md:rounded-2xl md:border md:border-gray-200 transition-all">
                 <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center md:px-16">
                   <Image
-                    src="/n17r.png"
+                    src="/dombra.png"
                     alt="Logo"
                     className="h-10 w-10 rounded-full"
                     width={20}
