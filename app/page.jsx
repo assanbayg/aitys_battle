@@ -6,5 +6,5 @@ import Chat from "@/components/home/chat";
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  return session == null ? <Chat /> : <Landing />;
+  return session !== null ? <Chat /> : <Landing />;
 }
