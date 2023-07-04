@@ -1,8 +1,8 @@
 "use client";
 
-import { Menu, Transition } from '@headlessui/react';
-import { ArrowRightOnRectangleIcon } from '@heroicons/react/20/solid';
-import cx from 'classnames';
+import { Menu, Transition } from "@headlessui/react";
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/20/solid";
+import cx from "classnames";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { Fragment } from "react";
@@ -20,7 +20,9 @@ export default function UserDropdown({ session }) {
             <span className="sr-only">Open user menu</span>
             <Image
               alt={email}
-              src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`}
+              src={
+                image || `https://avatars.dicebear.com/api/micah/${email}.svg`
+              }
               width={40}
               height={40}
               className="rounded-full"
@@ -40,7 +42,10 @@ export default function UserDropdown({ session }) {
             <Menu.Item>
               {({ active }) => (
                 <button
-                  className={cx(active ? 'bg-gray-100' : '', 'relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-sm text-gray-700')}
+                  className={cx(
+                    active ? "bg-gray-100" : "",
+                    "relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-sm text-gray-700",
+                  )}
                   onClick={() => signOut()}
                 >
                   <ArrowRightOnRectangleIcon className="h-4 w-4" />

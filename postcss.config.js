@@ -2,6 +2,6 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    'postcss-viewport-height-correction': {},
+    "postcss-viewport-height-correction": {},
   },
 };

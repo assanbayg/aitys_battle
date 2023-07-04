@@ -1,14 +1,13 @@
 import Footer from "@/components/layout/footer";
 import Nav from "@/components/layout/nav";
 import { Analytics } from "@vercel/analytics/react";
-import Script from 'next/script';
+import Script from "next/script";
 import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata = {
   title: "Aitys battle",
-  description:
-    "Battle .",
+  description: "Battle .",
   themeColor: "#FFF",
 };
 
@@ -33,24 +32,25 @@ function setViewportProperty(doc) {
 window.addEventListener('resize', setViewportProperty(document.documentElement));
 `;
 
-export default async function RootLayout({
-  children,
-}) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Script id="safari-viewport-fix">{IOS_SAFARI_VIEWPORT_UNIT_CORRECTION}</Script>
-      <body className="font-serif"
-      // {cx(sfPro.variable, inter.variable)}
+      <Script id="safari-viewport-fix">
+        {IOS_SAFARI_VIEWPORT_UNIT_CORRECTION}
+      </Script>
+      <body
+        className="font-serif"
+        // {cx(sfPro.variable, inter.variable)}
       >
         <div className="fixed h-screen w-full bg-orange-100" />
         <Suspense fallback="...">
           <Nav />
         </Suspense>
-        <main className="flex min-h-screen w-full flex-col items-center justify-center pt-16 relative">
+        <main className="relative flex min-h-screen w-full flex-col items-center justify-center pt-16">
           {children}
         </main>
-        <Analytics />     
-      <Footer />
+        <Analytics />
+        <Footer />
       </body>
     </html>
   );

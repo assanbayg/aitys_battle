@@ -14,10 +14,11 @@ export default function NavBar({ session }) {
     <>
       <SignInModal />
       <div
-        className={`fixed top-0 w-full ${scrolled
-          ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
-          : "bg-yellow-700 text-amber-50"
-          } z-30 transition-all`}
+        className={`fixed top-0 w-full ${
+          scrolled
+            ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
+            : "bg-yellow-700 text-amber-50"
+        } z-30 transition-all`}
       >
         <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
           <Link href="/" className="flex items-center font-display text-2xl">
@@ -31,14 +32,24 @@ export default function NavBar({ session }) {
             <p>Aitys Battle</p>
           </Link>
           <nav>
-          <ul className="flex space-x-4">
-            <li><a href="#" >Home</a></li>
-            <li><a href="#" >About</a></li>
-            <li><a href="#" >How It Works</a></li>
-            <li><a href="#figures" >Historical Figures</a></li>
-            <li><a href="#" >Contact</a></li>
-          </ul>
-        </nav>
+            <ul className="flex space-x-4">
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">How It Works</a>
+              </li>
+              <li>
+                <a href="#figures">Historical Figures</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
           <div>
             {session ? (
               <UserDropdown session={session} />
