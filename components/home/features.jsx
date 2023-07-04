@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 const Features = () => {
   return (
     <section className="py-8">
@@ -67,7 +65,7 @@ const Features = () => {
             <h4 className="mb-4 text-2xl">Game Format</h4>
 
             <p className="text-center">
-              Keep track of your and the AI's HP as you duel. <br /> Be
+              Keep track of your and the AI`s HP as you duel. <br /> Be
               strategic and win the battle!
             </p>
           </div>
