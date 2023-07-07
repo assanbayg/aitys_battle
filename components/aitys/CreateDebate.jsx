@@ -7,6 +7,26 @@ export default function CreateDebate() {
   const [firstFigure, setFirstFigure] = useState("Stalin");
   const [secondFigure, setSecondFigure] = useState("Lenin");
 
+  const generateAitys = async (id) => {
+    console.log("NOT GOOD");
+    console.log("GOOD");
+    try {
+      fetch(`http://localhost:8000/aitys/s${id}/response`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(id),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+    } catch (error) {
+      console.log("Error connecting to the backend", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -16,8 +36,10 @@ export default function CreateDebate() {
       return;
     }
 
+    var id = "";
+
     try {
-      const response = await fetch("http://localhost:8000/aitys", {
+      fetch("http://localhost:8000/aitys", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,18 +49,17 @@ export default function CreateDebate() {
           first_figure: firstFigure,
           second_figure: secondFigure,
         }),
-      });
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          id = data.id;
+          console.log(id);
 
-      if (response.ok) {
-        // Handle success
-        console.log("Debate created successfully!");
-        // You can redirect the user or display a success message
-      } else {
-        // Handle error
-        const responseData = await response.json();
-        console.log("Failed to create debate:", responseData);
-        // You can display an error message to the user based on the responseData
-      }
+          if (id.trim().length !== 0) {
+            console.log("WELL");
+            generateAitys(id);
+          }
+        });
     } catch (error) {
       console.log("Error connecting to the backend", error);
     }
