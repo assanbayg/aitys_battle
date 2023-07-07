@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Character = ({ name, image, i }) => {
+const Character = ({ name, image }) => {
   return (
     <div>
       <Image src={image} alt={name} width={256} height={256} />

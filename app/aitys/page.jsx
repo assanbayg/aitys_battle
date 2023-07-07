@@ -1,3 +1,4 @@
+import CreateDebate from "@/components/aitys/CreateDebate";
 import Character from "../../components/aitys/Character";
 import CourtroomScene from "../../components/aitys/CourtroomScene";
 
@@ -105,10 +106,13 @@ export default function Dialogue() {
   ];
 
   return (
-    <CourtroomScene
-      character1={character1}
-      character2={character2}
-      replies={replies}
-    />
+    <>
+      <CreateDebate></CreateDebate>
+      {/* <CourtroomScene
+        character1={character1}
+        character2={character2}
+        replies={replies}
+      /> */}
+    </>
   );
 }
