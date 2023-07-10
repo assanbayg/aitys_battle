@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useTransition, animated } from "react-spring";
 import Reply from "./Reply";
+import Character from "./Character";
 
 const CourtroomScene = ({ character1, character2, replies }) => {
   const [currentReplyIndex, setCurrentReplyIndex] = useState(0);
@@ -46,12 +47,16 @@ const CourtroomScene = ({ character1, character2, replies }) => {
       <div className="mb-5 flex">
         {transitions((style) => (
           <animated.div style={style} className="flex items-center gap-x-5">
-            {currentCharacter === 1 ? character1 : character2}
+            {currentCharacter === 1 ? (
+              <Character name={character1} image="/character1.png" />
+            ) : (
+              <Character name={character2} image="/character2.png" />
+            )}
             <Reply
               text={
                 currentCharacter === 1
-                  ? replies[currentReplyIndex].character1
-                  : replies[currentReplyIndex].character2
+                  ? replies[currentReplyIndex][character1]
+                  : replies[currentReplyIndex][character2]
               }
             />
           </animated.div>

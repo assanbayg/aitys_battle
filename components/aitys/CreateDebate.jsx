@@ -1,27 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import React, { useRef } from "react";
+import { useState, useEffect } from "react";
+import CourtroomScene from "./CourtroomScene";
 
 export default function CreateDebate() {
   const [topic, setTopic] = useState("Revolution");
   const [firstFigure, setFirstFigure] = useState("Stalin");
   const [secondFigure, setSecondFigure] = useState("Lenin");
+  const [replies, setReplies] = useState([]);
+  const [isGenerated, setIsGenerated] = useState(false);
 
-  const generateAitys = async (id) => {
-    console.log("NOT GOOD");
-    console.log("GOOD");
+  useEffect(() => {
+    console.log(replies); // Log the updated value of replies
+  }, [replies]);
+
+  const generateAitys = async (id, topic, firstFigure, secondFigure) => {
     try {
-      fetch(`http://localhost:8000/aitys/s${id}/response`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `http://localhost:8000/aitys/${id}/response`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: id,
+            topic: topic,
+            first_figure: firstFigure,
+            second_figure: secondFigure,
+          }),
         },
-        body: JSON.stringify(id),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
+      );
+
+      const data = await response.json();
+      setReplies(data);
+      console.log(data);
+      setIsGenerated(true);
     } catch (error) {
       console.log("Error connecting to the backend", error);
     }
@@ -30,16 +45,13 @@ export default function CreateDebate() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if the required fields are filled
-    if (!firstFigure || !secondFigure) {
+    if (!firstFigure || !secondFigure || !topic) {
       console.log("Please fill in all the required fields");
       return;
     }
 
-    var id = "";
-
     try {
-      fetch("http://localhost:8000/aitys", {
+      const response = await fetch("http://localhost:8000/aitys", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,17 +61,15 @@ export default function CreateDebate() {
           first_figure: firstFigure,
           second_figure: secondFigure,
         }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          id = data.id;
-          console.log(id);
+      });
 
-          if (id.trim().length !== 0) {
-            console.log("WELL");
-            generateAitys(id);
-          }
-        });
+      const data = await response.json();
+      const id = data.id;
+      console.log(id);
+
+      if (id.trim().length !== 0) {
+        await generateAitys(id, topic, firstFigure, secondFigure);
+      }
     } catch (error) {
       console.log("Error connecting to the backend", error);
     }
@@ -114,6 +124,14 @@ export default function CreateDebate() {
           Create
         </button>
       </form>
+
+      {isGenerated && (
+        <CourtroomScene
+          character1={firstFigure}
+          character2={secondFigure}
+          replies={replies}
+        />
+      )}
     </div>
   );
 }
