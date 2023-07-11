@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTransition, animated } from "react-spring";
 import Reply from "./Reply";
 import Character from "./Character";
@@ -10,21 +10,21 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   const [currentCharacter, setCurrentCharacter] = useState(1);
 
   const handlePrevClick = () => {
-    if (currentCharacter === 2) {
-      setCurrentCharacter(1);
-    } else if (currentReplyIndex > 0) {
-      setCurrentReplyIndex(currentReplyIndex - 1);
-      setCurrentCharacter(2);
+    if (currentReplyIndex === 0) {
+      return;
     }
+    currentCharacter === 1 ? setCurrentCharacter(2) : setCurrentCharacter(1);
+    setCurrentReplyIndex(currentReplyIndex - 1);
   };
 
   const handleNextClick = () => {
-    if (currentCharacter === 1) {
-      setCurrentCharacter(2);
-    } else if (currentReplyIndex < replies.length - 1) {
-      setCurrentReplyIndex(currentReplyIndex + 1);
+    if (currentReplyIndex === replies.length - 1) {
+      setCurrentReplyIndex(0);
       setCurrentCharacter(1);
+      return;
     }
+    currentCharacter === 1 ? setCurrentCharacter(2) : setCurrentCharacter(1);
+    setCurrentReplyIndex(currentReplyIndex + 1);
   };
 
   const transitions = useTransition(currentCharacter, {

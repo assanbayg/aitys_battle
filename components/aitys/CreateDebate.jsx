@@ -1,20 +1,18 @@
 "use client";
 
-import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import CourtroomScene from "./CourtroomScene";
 
 export default function CreateDebate() {
-  const [topic, setTopic] = useState("Revolution");
-  const [firstFigure, setFirstFigure] = useState("Stalin");
-  const [secondFigure, setSecondFigure] = useState("Lenin");
-  const [replies, setReplies] = useState([]);
+  const [topic, setTopic] = useState("Justice");
+  const [firstFigure, setFirstFigure] = useState("Tokayev");
+  const [secondFigure, setSecondFigure] = useState("Nazarbayev");
   const [isGenerated, setIsGenerated] = useState(false);
+  const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    console.log(replies); // Log the updated value of replies
-  }, [replies]);
-
+    console.log(replies);
+  });
   const generateAitys = async (id, topic, firstFigure, secondFigure) => {
     try {
       const response = await fetch(
