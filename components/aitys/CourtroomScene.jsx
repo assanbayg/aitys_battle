@@ -1,13 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTransition, animated } from "react-spring";
 import Reply from "./Reply";
 import Character from "./Character";
 
 const CourtroomScene = ({ character1, character2, replies }) => {
+  const dombraSoundRef = useRef(new Audio("/dombra-sound.mp3"));
   const [currentReplyIndex, setCurrentReplyIndex] = useState(0);
   const [currentCharacter, setCurrentCharacter] = useState(1);
+
+  const stopSound = () => {
+    const dombraSound = dombraSoundRef.current;
+    dombraSound.currentTime = 0;
+    dombraSound.pause();
+  };
+
+  const playSound = () => {
+    const dombraSound = dombraSoundRef.current;
+    dombraSound.play();
+  };
+
+  useEffect(() => {
+    playSound();
+
+    return () => {
+      stopSound();
+    };
+  }, []);
 
   const handlePrevClick = () => {
     if (currentReplyIndex === 0) {
@@ -18,6 +38,8 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   };
 
   const handleNextClick = () => {
+    stopSound();
+    playSound();
     if (currentReplyIndex === replies.length - 1) {
       setCurrentReplyIndex(0);
       setCurrentCharacter(1);
