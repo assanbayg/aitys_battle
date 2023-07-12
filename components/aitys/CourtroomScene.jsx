@@ -16,16 +16,39 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     dombraSound.pause();
   };
 
+  const stopTextToSpeech = () => {
+    if ("speechSynthesis" in window) {
+      speechSynthesis.cancel();
+    }
+  };
+
+  const textToSpeech = () => {
+    if ("speechSynthesis" in window) {
+      let msg =
+        currentCharacter === 0
+          ? new SpeechSynthesisUtterance(
+              replies.replies[currentReplyIndex][character1],
+            )
+          : new SpeechSynthesisUtterance(
+              replies.replies[currentReplyIndex][character2],
+            );
+      speechSynthesis.speak(msg);
+    }
+  };
+
   const playSound = () => {
     const dombraSound = dombraSoundRef.current;
+    dombraSound.volume = 0.3;
     dombraSound.play();
   };
 
   useEffect(() => {
     playSound();
+    textToSpeech();
 
     return () => {
       stopSound();
+      stopTextToSpeech();
     };
   }, []);
 
@@ -38,7 +61,8 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   };
 
   const handleNextClick = () => {
-    console.log("CURREnt: ", currentReplyIndex);
+    stopTextToSpeech();
+    textToSpeech();
     stopSound();
     playSound();
     if (
@@ -70,9 +94,6 @@ const CourtroomScene = ({ character1, character2, replies }) => {
         currentCharacter === 0 ? "translateX(100%)" : "translateX(-100%)",
     },
   });
-
-  console.log(currentReplyIndex);
-  console.log(replies.replies[currentReplyIndex]);
 
   return (
     <div className="flex flex-col items-center">
