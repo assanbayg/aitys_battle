@@ -9,61 +9,55 @@ export default function CreateDebate() {
   const [secondFigure, setSecondFigure] = useState("Nazarbayev");
   const [isGenerated, setIsGenerated] = useState(false);
   const [replies, setReplies] = useState([
-    {
-      Nazarbayev:
-        "Oh, my dear friend, let me sing you a song,\nAbout corruption, a topic so wrong.\nAs the former President of Kazakhstan, I've seen it all,\nAnd I'll share my perspective, standing tall.\nCorruption, a cancer that eats at the core,\nA disease that we must fight, forevermore.\nBut my dear friend, let me tell you this,\nCorruption is not just a Kazakhstani abyss.\nIt's a global issue, spreading its roots,\nIn every corner of the world, corrupt pursuits.\nFrom politicians to businessmen, no one is spared,\nCorruption's grip is tight, it's everywhere.\nBut fear not, my friend, for there is hope,\nTogether we can fight, we can cope.\nTransparency and accountability, the keys to success,\nLet's join hands, let's clean up this mess.\nSo let us stand united, against corruption we'll fight,\nWith justice and integrity, we'll make things right.\nOh, my dear friend, let us sing this song,\nAnd together, we'll prove corruption wrong.",
-      Stalin:
-        "Oh, my dear partner, let me sing you a song,\nOf corruption and its dangers, that I've known for so long.\nIn the Soviet Union, I ruled with an iron fist,\nFor I believed corruption threatened our unity, it did persist.\nBut you, my friend, seem to doubt my intentions,\nLet me enlighten you with some historical mentions.\n\nFrom the depths of history, corruption has always thrived,\nUndermining nations, tearing them apart, leaving them deprived.\nIt seeps into the veins of power, poisoning the soul,\nA cancerous disease that consumes, taking its toll.\n\nI fought against corruption, with all my might,\nFor I knew its consequences, its devastating blight.\nI purged the ranks, removed the traitors, the thieves,\nBut alas, my efforts were met with disbelief.\n\nYou question my methods, my iron-fisted rule,\nBut tell me, my friend, what would you do?\nWhen faced with a nation on the brink of collapse,\nWould you sit idly by, or take action, perhaps?\n\nI may have been harsh, I may have been severe,\nBut I did what I believed was necessary, my dear.\nFor corruption is a poison that eats away at the core,\nAnd I, Stalin, would not let it destroy us anymore.\n\nSo listen to my song, my friend, and heed my words,\nCorruption is a danger, a threat that must be deterred.\nIn the Soviet Union, we fought against its might,\nFor a united nation, strong and shining bright.",
-    },
-    {
-      Stalin: "Hmmm",
-      Nazarbayev: "Well",
-    },
+    // {
+    //   Nazarbayev:
+    //     "Oh, my dear friend, let me sing you a song,\nAbout corruption, a topic so wrong.\nAs the former President of Kazakhstan, I've seen it all,\nAnd I'll share my perspective, standing tall.\nCorruption, a cancer that eats at the core,\nA disease that we must fight, forevermore.\nBut my dear friend, let me tell you this,\nCorruption is not just a Kazakhstani abyss.\nIt's a global issue, spreading its roots,\nIn every corner of the world, corrupt pursuits.\nFrom politicians to businessmen, no one is spared,\nCorruption's grip is tight, it's everywhere.\nBut fear not, my friend, for there is hope,\nTogether we can fight, we can cope.\nTransparency and accountability, the keys to success,\nLet's join hands, let's clean up this mess.\nSo let us stand united, against corruption we'll fight,\nWith justice and integrity, we'll make things right.\nOh, my dear friend, let us sing this song,\nAnd together, we'll prove corruption wrong.",
+    //   Stalin:
+    //     "Oh, my dear partner, let me sing you a song,\nOf corruption and its dangers, that I've known for so long.\nIn the Soviet Union, I ruled with an iron fist,\nFor I believed corruption threatened our unity, it did persist.\nBut you, my friend, seem to doubt my intentions,\nLet me enlighten you with some historical mentions.\n\nFrom the depths of history, corruption has always thrived,\nUndermining nations, tearing them apart, leaving them deprived.\nIt seeps into the veins of power, poisoning the soul,\nA cancerous disease that consumes, taking its toll.\n\nI fought against corruption, with all my might,\nFor I knew its consequences, its devastating blight.\nI purged the ranks, removed the traitors, the thieves,\nBut alas, my efforts were met with disbelief.\n\nYou question my methods, my iron-fisted rule,\nBut tell me, my friend, what would you do?\nWhen faced with a nation on the brink of collapse,\nWould you sit idly by, or take action, perhaps?\n\nI may have been harsh, I may have been severe,\nBut I did what I believed was necessary, my dear.\nFor corruption is a poison that eats away at the core,\nAnd I, Stalin, would not let it destroy us anymore.\n\nSo listen to my song, my friend, and heed my words,\nCorruption is a danger, a threat that must be deterred.\nIn the Soviet Union, we fought against its might,\nFor a united nation, strong and shining bright.",
+    // },
+    // {
+    //   Stalin: "Hmmm",
+    //   Nazarbayev: "Well",
+    // },
   ]);
 
   useEffect(() => {
     console.log(replies);
   });
 
-  const handleSubmit = () => {
-    setIsGenerated(true);
-  };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
+  // const handleSubmit = () => {
   //   setIsGenerated(true);
   // };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   if (!firstFigure || !secondFigure || !topic) {
-  //     console.log("Please fill in all the required fields");
-  //     return;
-  //   }
+    if (!firstFigure || !secondFigure || !topic) {
+      console.log("Please fill in all the required fields");
+      return;
+    }
 
-  //   try {
-  //     const response = await fetch("http://localhost:8000/aitys", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         topic,
-  //         first_figure: firstFigure,
-  //         second_figure: secondFigure,
-  //       }),
-  //     });
+    try {
+      const response = await fetch("http://localhost:8000/aitys", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          topic,
+          first_figure: firstFigure,
+          second_figure: secondFigure,
+        }),
+      });
 
-  //     const data = await response.json();
-  //     setReplies(data);
-  //     console.log(data);
-  //     setIsGenerated(true);
-  //   } catch (error) {
-  //     console.log("Error connecting to the backend", error);
-  //   }
-  // };
+      const data = await response.json();
+      setReplies(data);
+      console.log(data);
+      setIsGenerated(true);
+    } catch (error) {
+      console.log("Error connecting to the backend", error);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center">
