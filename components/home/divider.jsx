@@ -1,9 +1,8 @@
 const Divider = () => {
   return (
-    <div
-      className="h-min bg-contain bg-center"
-      style={{ backgroundImage: "url('oyu.png')" }}
-    ></div>
+    <div className=" flex">
+      <img src="oyus.png" className="inline-block w-full" />
+    </div>
   );
 };
 
