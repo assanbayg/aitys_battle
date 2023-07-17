@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import { Suspense } from "react";
 import "./globals.css";
+import "@fontsource/varela-round";
 
 export const metadata = {
   title: "Aitys battle",
@@ -39,10 +40,10 @@ export default async function RootLayout({ children }) {
         {IOS_SAFARI_VIEWPORT_UNIT_CORRECTION}
       </Script>
       <body
-        className="font-serif"
+        className="font-default"
         // {cx(sfPro.variable, inter.variable)}
       >
-        <div className="fixed h-screen w-full bg-orange-100" />
+        <div className="fixed h-screen w-full bg-[#593440]" />
         <Suspense fallback="...">
           <Nav />
         </Suspense>

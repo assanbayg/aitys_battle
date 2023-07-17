@@ -3,8 +3,11 @@
 import useScroll from "@/lib/hooks/use-scroll";
 import Image from "next/image";
 import Link from "next/link";
+import localFont from "next/font/local";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
+
+import "@fontsource/unica-one";
 
 export default function NavBar({ session }) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
@@ -17,11 +20,11 @@ export default function NavBar({ session }) {
         className={`fixed top-0 w-full ${
           scrolled
             ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
-            : "bg-yellow-700 text-amber-50"
-        } z-30 transition-all`}
+            : "bg-[#B47878] text-white"
+        } z-30 font-headline transition-all`}
       >
         <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
-          <Link href="/" className="flex items-center font-display text-2xl">
+          <Link href="/" className="flex items-center text-2xl">
             <Image
               src="/dombra.png"
               alt="Dombra logo"
@@ -55,7 +58,7 @@ export default function NavBar({ session }) {
               <UserDropdown session={session} />
             ) : (
               <button
-                className="rounded-full bg-yellow-800 p-1.5 px-4 text-sm text-amber-50 transition-all hover:bg-white hover:text-black"
+                className="rounded-full bg-[#593440] p-1.5 px-4 text-sm text-amber-50 transition-all hover:bg-white hover:text-black"
                 onClick={() => setShowSignInModal(true)}
               >
                 Sign In
