@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import CourtroomScene from "@/components/aitys/CourtroomScene";
 
 export default function ChooseCharacter() {
   const [firstCharacter, setFirstCharacter] = useState();
   const [secondCharacter, setSecondCharacter] = useState();
   const [firstSelect, setFirstSelect] = useState(true);
   const [secondSelect, setSecondSelect] = useState(false);
+  const [replies, setReplies] = useState([]);
   const [topic, setTopic] = useState("");
+  const [isGenerated, setIsGenerated] = useState(false);
   const [data, setData] = useState([
     {
       name: "Akhmet Baitursynov",
@@ -52,6 +55,36 @@ export default function ChooseCharacter() {
     setTopic(e.target.value);
   }
 
+  async function getAitys(e) {
+    e.preventDefault();
+
+    if (!firstCharacter || !secondCharacter || !topic) {
+      console.log("Please fill in all the required fields");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/aitys", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          topic,
+          first_figure: firstCharacter.name,
+          second_figure: secondCharacter.name,
+        }),
+      });
+
+      const newReplies = await response.json();
+      setReplies(newReplies);
+      setIsGenerated(true);
+      console.log(newReplies);
+    } catch (error) {
+      console.log("Error connecting to the backend", error);
+    }
+  }
+
   const [selectedCharacter, setSelectedCharacter] = useState(data[0]);
 
   const getCharacter = (character) => {
@@ -70,75 +103,88 @@ export default function ChooseCharacter() {
 
   return (
     <>
-      <div className="my-2 flex content-between items-center gap-10">
-        <div onClick={() => setFirstSelect(true)} className="h-60">
-          <img
-            className="h-60 w-auto"
-            src={firstCharacter ? firstCharacter.image : "/unknown.png"}
-          />
-        </div>
-        <div className="flex flex-col gap-4">
-          <p className="text-center text-3xl text-white">Topic</p>
-          <input
-            className="p-1"
-            placeholder="Enter topic"
-            value={topic}
-            onChange={onChange}
-          />
-          <button className="h-14 rounded-2xl bg-[#F08A8A] text-2xl text-white">
-            Start
-          </button>
-        </div>
-        <div onClick={() => setSecondSelect(true)}>
-          <img
-            className="h-60 w-auto"
-            src={secondCharacter ? secondCharacter.image : "/unknown.png"}
-          />
-        </div>
-      </div>
-      <div className="flex content-around items-center px-60 py-8">
-        <div>
-          {(selectedCharacter === data.length) === 0 ? (
-            <div>
-              <p>Loading...</p>
-            </div>
-          ) : (
-            <div
-              key={selectedCharacter.id}
-              className="mx-5 rounded-3xl border-4  bg-red-50 p-3  text-fuchsia-950"
-            >
-              <h1 className="text-4xl ">{selectedCharacter.name}</h1>
-              <p className="text-xl">{selectedCharacter.description}</p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <main>
-        <section className="grid grid-cols-6">
-          {data.map((character) => (
-            <div
-              key={character.id}
-              className="character-profile border-2 border-solid border-black"
-              onClick={() => getCharacter(character)}
-            >
+      {isGenerated ? (
+        <CourtroomScene
+          character1={firstCharacter}
+          character2={secondCharacter}
+          replies={replies}
+        />
+      ) : (
+        <>
+          <div className="my-2 flex content-between items-center gap-10">
+            <div onClick={() => setFirstSelect(true)} className="h-60">
               <img
-                src={character.image}
-                alt={character.name}
-                // width={240}
-                // height={300}
+                className="h-60 w-auto"
+                src={firstCharacter ? firstCharacter.image : "/unknown.png"}
               />
-              {/* <img src={character.image} /> */}
-
-              <div className="bg-red-200">
-                <p className="text-center font-bold uppercase text-white">
-                  {character.name}
-                </p>
-              </div>
             </div>
-          ))}
-        </section>
-      </main>
+            <div className="flex flex-col gap-4">
+              <p className="text-center text-3xl text-white">Topic</p>
+              <input
+                className="p-1"
+                placeholder="Enter topic"
+                value={topic}
+                onChange={onChange}
+              />
+              <button
+                onClick={getAitys}
+                className="h-14 rounded-2xl bg-[#F08A8A] text-2xl text-white"
+              >
+                Start
+              </button>
+            </div>
+            <div onClick={() => setSecondSelect(true)}>
+              <img
+                className="h-60 w-auto"
+                src={secondCharacter ? secondCharacter.image : "/unknown.png"}
+              />
+            </div>
+          </div>
+          <div className="flex content-around items-center px-60 py-8">
+            <div>
+              {(selectedCharacter === data.length) === 0 ? (
+                <div>
+                  <p>Loading...</p>
+                </div>
+              ) : (
+                <div
+                  key={selectedCharacter.id}
+                  className="mx-5 rounded-3xl border-4  bg-red-50 p-3  text-fuchsia-950"
+                >
+                  <h1 className="text-4xl ">{selectedCharacter.name}</h1>
+                  <p className="text-xl">{selectedCharacter.description}</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <main>
+            <section className="grid grid-cols-6">
+              {data.map((character) => (
+                <div
+                  key={character.id}
+                  className="character-profile border-2 border-solid border-black"
+                  onClick={() => getCharacter(character)}
+                >
+                  <img
+                    src={character.image}
+                    alt={character.name}
+                    // width={240}
+                    // height={300}
+                  />
+                  {/* <img src={character.image} /> */}
+
+                  <div className="bg-red-200">
+                    <p className="text-center font-bold uppercase text-white">
+                      {character.name}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </section>
+          </main>
+        </>
+      )}
     </>
   );
 }

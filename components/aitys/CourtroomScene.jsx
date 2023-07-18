@@ -89,17 +89,22 @@ const CourtroomScene = ({ character1, character2, replies }) => {
         currentCharacter === 0 ? "translateX(100%)" : "translateX(-100%)",
     },
   });
-
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex w-screen flex-col items-center bg-[url('/yurt.png')] bg-cover bg-center bg-no-repeat">
       <h1 className="my-5 text-3xl font-bold">Courtroom Scene</h1>
       <div className="mb-5 flex">
         {transitions((style) => (
           <animated.div style={style} className="flex items-center gap-x-5">
             {currentCharacter === 0 ? (
-              <Character name={character1} image="/character1.png" />
+              <Character
+                name={character1}
+                image={"/" + character1.split(" ")[1].toLowerCase() + ".png"}
+              />
             ) : (
-              <Character name={character2} image="/character2.png" />
+              <Character
+                name={character2}
+                image={"/" + character2.split(" ")[1].toLowerCase() + ".png"}
+              />
             )}
             <Reply
               text={
@@ -112,7 +117,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
           </animated.div>
         ))}
       </div>
-      <div className="flex text-4xl font-bold">
+      <div className="flex text-4xl font-bold text-white">
         <button onClick={handlePrevClick}>{"<"}</button>
         <button onClick={handleNextClick}>{">"}</button>
       </div>
