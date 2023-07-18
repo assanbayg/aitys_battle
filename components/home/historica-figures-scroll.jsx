@@ -1,27 +1,34 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
+
 const HistoricalFigures = () => {
   const figures = [
     {
-      name: "Akhmet Baitursynuly",
-      image: "/baitursynov.jpeg",
+      name: "Akhmet Baitursynov",
+      image: "/baitursynov.png",
       description:
         "Akhmet Baitursynov was a prominent Kazakh poet, writer, and public figure. He played a crucial role in the development of Kazakh literature and language reform.",
     },
     {
       name: "Alikhan Bukeikhanov",
-      image: "/bukeikhanov.jpg",
+      image: "/bukeikhanov.png",
       description:
         "Alikhan Bukeikhanov was a Kazakh composer and musician. He is known for his contributions to Kazakh classical music and his efforts in preserving traditional Kazakh music.",
     },
     {
-      name: "Birzhan Sal",
-      image: "/birzhan-sal.jpeg",
+      name: "Mirzhakyp Dulatov",
+      image: "/dulatov.png",
+      description:
+        "Alikhan Bukeikhanov was a Kazakh composer and musician. He is known for his contributions to Kazakh classical music and his efforts in preserving traditional Kazakh music.",
+    },
+    {
+      name: "Saken Seifullin",
+      image: "/seifullin.png",
       description:
         "Birzhan Sal was a Kazakh akyn (poet-musician) and a key figure in Kazakh oral literature. His poetry and musical performances played a significant role in shaping Kazakh cultural identity.",
     },
     {
-      name: "Sara Tastanbekkyzy",
-      image: "/sara.jpeg",
+      name: "Sabit Mukanov",
+      image: "/mukanov.png",
       description:
         "Sara is  poet, musician, folk poet, musician, drummer. He came from the Atalik Kaptagai section of the Matai clan of the Naiman tribe.",
     },
@@ -34,12 +41,14 @@ const HistoricalFigures = () => {
         <div className="flex space-x-4 overflow-x-auto">
           {figures.map((figure, index) => (
             <div key={index} className="max-w-sm">
-              <img
+              <Image
                 src={figure.image}
                 alt={figure.name}
-                className="mb-2 h-72 w-56 rounded-lg"
+                width={224}
+                height={288}
+                className="mb-2 rounded-lg"
               />
-              <h4 className="mb-2 font-serif text-2xl">{figure.name}</h4>
+              <h4 className="mb-2 font-default text-2xl">{figure.name}</h4>
               <p>{figure.description}</p>
             </div>
           ))}

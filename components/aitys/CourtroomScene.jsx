@@ -26,11 +26,9 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     if ("speechSynthesis" in window) {
       let msg =
         currentCharacter === 0
-          ? new SpeechSynthesisUtterance(
-              replies.replies[currentReplyIndex][character1],
-            )
+          ? new SpeechSynthesisUtterance(replies[currentReplyIndex][character1])
           : new SpeechSynthesisUtterance(
-              replies.replies[currentReplyIndex][character2],
+              replies[currentReplyIndex][character2],
             );
       speechSynthesis.speak(msg);
     }
@@ -65,10 +63,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     textToSpeech();
     stopSound();
     playSound();
-    if (
-      currentReplyIndex === replies.replies.length - 1 &&
-      currentCharacter === 1
-    ) {
+    if (currentReplyIndex === replies.length - 1 && currentCharacter === 1) {
       setCurrentReplyIndex(0);
       setCurrentCharacter(0);
       return;
@@ -109,9 +104,9 @@ const CourtroomScene = ({ character1, character2, replies }) => {
             <Reply
               text={
                 currentCharacter === 0 ||
-                replies.replies[currentReplyIndex] != "undefined"
-                  ? replies.replies[currentReplyIndex][character1]
-                  : replies.replies[currentReplyIndex][character2]
+                replies[currentReplyIndex] != "undefined"
+                  ? replies[currentReplyIndex][character1]
+                  : replies[currentReplyIndex][character2]
               }
             />
           </animated.div>

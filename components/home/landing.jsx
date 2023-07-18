@@ -2,6 +2,7 @@ import Balancer from "react-wrap-balancer";
 import Features from "./features";
 import HistoricalFiguresScroll from "./historica-figures-scroll";
 import Divider from "./divider";
+import Link from "next/link";
 
 export default function Landing() {
   return (
@@ -16,7 +17,7 @@ export default function Landing() {
             <br /> HISTORY OF KAZAKHSTAN
           </h1>
           <button className="mt-8 rounded-2xl bg-[#F08A8A] px-12 py-3 text-3xl text-white">
-            Start Aitys
+            <Link href="/choose-characters">Start Aitys</Link>
           </button>
         </div>
       </div>
