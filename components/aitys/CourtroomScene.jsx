@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
 import { useTransition, animated } from "react-spring";
 import Reply from "./Reply";
@@ -30,6 +28,9 @@ const CourtroomScene = ({ character1, character2, replies }) => {
           : new SpeechSynthesisUtterance(
               replies[currentReplyIndex][character2],
             );
+      msg.onend = function (event) {
+        handleNextClick();
+      };
       speechSynthesis.speak(msg);
     }
   };
@@ -89,6 +90,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
         currentCharacter === 0 ? "translateX(100%)" : "translateX(-100%)",
     },
   });
+
   return (
     <div className="flex w-screen flex-col items-center bg-[url('/yurt.png')] bg-cover bg-center bg-no-repeat">
       <h1 className="my-5 text-3xl font-bold">Courtroom Scene</h1>

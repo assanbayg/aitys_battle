@@ -7,7 +7,7 @@ export default function CreateDebate() {
   const [topic, setTopic] = useState("Justice");
   const [firstFigure, setFirstFigure] = useState("Alikhan Bukeikhanov");
   const [secondFigure, setSecondFigure] = useState("Akhmet Baitursynov");
-  const [isGenerated, setIsGenerated] = useState(true);
+  const [isGenerated, setIsGenerated] = useState(false);
   const [replies, setReplies] = useState([
     {
       "Alikhan Bukeikhanov":
