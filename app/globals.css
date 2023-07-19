@@ -4,7 +4,6 @@
 
 .character-profile:hover {
   border: 0.2rem solid rgb(252 211 77);
-
   cursor: pointer;
 }
 

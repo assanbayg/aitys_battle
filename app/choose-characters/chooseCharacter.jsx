@@ -119,7 +119,7 @@ export default function ChooseCharacter() {
               />
             </div>
             <div className="flex flex-col gap-4">
-              <p className="text-center text-3xl text-white">Topic</p>
+              <p className="text-center text-3xl">Topic</p>
               <input
                 className="p-1"
                 placeholder="Enter topic"
@@ -128,7 +128,7 @@ export default function ChooseCharacter() {
               />
               <button
                 onClick={getAitys}
-                className="h-14 rounded-2xl bg-[#F08A8A] text-2xl text-white"
+                className="h-14 rounded-2xl bg-[#F08A8A] text-2xl "
               >
                 Start
               </button>
@@ -149,10 +149,14 @@ export default function ChooseCharacter() {
               ) : (
                 <div
                   key={selectedCharacter.id}
-                  className="mx-5 rounded-3xl border-4  bg-red-50 p-3  text-fuchsia-950"
+                  className="mx-5 rounded-3xl border-4  bg-red-50 p-3  "
                 >
-                  <h1 className="text-4xl ">{selectedCharacter.name}</h1>
-                  <p className="text-xl">{selectedCharacter.description}</p>
+                  <h1 className="text-4xl text-fuchsia-950">
+                    {selectedCharacter.name}
+                  </h1>
+                  <p className="text-xl text-fuchsia-950">
+                    {selectedCharacter.description}
+                  </p>
                 </div>
               )}
             </div>
@@ -163,7 +167,7 @@ export default function ChooseCharacter() {
               {data.map((character) => (
                 <div
                   key={character.id}
-                  className="character-profile border-2 border-solid border-black"
+                  className="character-profile border-2 border-solid border-black bg-red-400"
                   onClick={() => getCharacter(character)}
                 >
                   <img
@@ -175,7 +179,7 @@ export default function ChooseCharacter() {
                   {/* <img src={character.image} /> */}
 
                   <div className="bg-red-200">
-                    <p className="text-center font-bold uppercase text-white">
+                    <p className="text-center font-bold uppercase">
                       {character.name}
                     </p>
                   </div>

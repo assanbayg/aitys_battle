@@ -12,7 +12,7 @@ export default function Landing() {
         style={{ backgroundImage: "url('oyu-bg.png')" }}
       >
         <div className="relative z-10 flex h-full flex-col items-center justify-center space-y-8 px-4 py-16">
-          <h1 className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="text-center text-4xl font-extrabold tracking-tight  sm:text-5xl md:text-6xl">
             GENERATIVE AI MEETS
             <br /> HISTORY OF KAZAKHSTAN
           </h1>
