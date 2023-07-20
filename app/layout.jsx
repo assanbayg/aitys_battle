@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
           {children}
         </main>
         <Analytics />
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
