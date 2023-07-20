@@ -12,6 +12,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     const dombraSound = dombraSoundRef.current;
     dombraSound.currentTime = 0;
     dombraSound.pause();
+    stopTextToSpeech();
   };
 
   const stopTextToSpeech = () => {
@@ -39,17 +40,13 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     const dombraSound = dombraSoundRef.current;
     dombraSound.volume = 0.3;
     dombraSound.play();
+    textToSpeech();
   };
 
   useEffect(() => {
+    stopSound();
     playSound();
-    textToSpeech();
-
-    return () => {
-      stopSound();
-      stopTextToSpeech();
-    };
-  }, []);
+  }, [currentCharacter, currentReplyIndex]);
 
   const handlePrevClick = () => {
     if (currentReplyIndex === 0) {
@@ -60,10 +57,6 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   };
 
   const handleNextClick = () => {
-    stopTextToSpeech();
-    textToSpeech();
-    stopSound();
-    playSound();
     if (currentReplyIndex === replies.length - 1 && currentCharacter === 1) {
       setCurrentReplyIndex(0);
       setCurrentCharacter(0);
@@ -75,6 +68,8 @@ const CourtroomScene = ({ character1, character2, replies }) => {
       setCurrentCharacter(0);
       setCurrentReplyIndex(currentReplyIndex + 1);
     }
+    stopSound();
+    playSound();
   };
 
   const transitions = useTransition(currentCharacter, {
@@ -110,8 +105,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
             )}
             <Reply
               text={
-                currentCharacter === 0 ||
-                replies[currentReplyIndex] != "undefined"
+                currentCharacter === 0
                   ? replies[currentReplyIndex][character1]
                   : replies[currentReplyIndex][character2]
               }
