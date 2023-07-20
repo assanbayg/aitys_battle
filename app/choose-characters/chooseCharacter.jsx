@@ -11,7 +11,7 @@ export default function ChooseCharacter() {
   const [secondSelect, setSecondSelect] = useState(false);
   const [replies, setReplies] = useState([]);
   const [topic, setTopic] = useState("");
-  const [isGenerated, setIsGenerated] = useState(false);
+  const [isGenerated, setIsGenerated] = useState();
   const [data, setData] = useState([
     {
       name: "Akhmet Baitursynov",
@@ -58,13 +58,18 @@ export default function ChooseCharacter() {
   async function getAitys(e) {
     e.preventDefault();
 
+    if (topic == "") {
+      console.log("SUCK IT");
+      return;
+    }
+
     if (!firstCharacter || !secondCharacter || !topic) {
       console.log("Please fill in all the required fields");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:8000/aitys", {
+      const response = await fetch(`${process.env.BACKEND_URL}/aitys`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,7 +119,6 @@ export default function ChooseCharacter() {
           <div className="my-2 flex content-between items-center gap-10">
             <div onClick={() => setFirstSelect(true)} className="h-60">
               <Image
-                // className="h-60 w-auto"
                 alt={firstCharacter ? firstCharacter.name : "First Character"}
                 src={firstCharacter ? firstCharacter.image : "/unknown.png"}
                 height={240}

@@ -25,9 +25,11 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     if ("speechSynthesis" in window) {
       let msg =
         currentCharacter === 0
-          ? new SpeechSynthesisUtterance(replies[currentReplyIndex][character1])
+          ? new SpeechSynthesisUtterance(
+              replies.replies[currentReplyIndex][character1],
+            )
           : new SpeechSynthesisUtterance(
-              replies[currentReplyIndex][character2],
+              replies.replies[currentReplyIndex][character2],
             );
       msg.onend = function (event) {
         handleNextClick();
@@ -57,7 +59,10 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   };
 
   const handleNextClick = () => {
-    if (currentReplyIndex === replies.length - 1 && currentCharacter === 1) {
+    if (
+      currentReplyIndex === replies.replies.length - 1 &&
+      currentCharacter === 1
+    ) {
       setCurrentReplyIndex(0);
       setCurrentCharacter(0);
       return;
@@ -106,8 +111,8 @@ const CourtroomScene = ({ character1, character2, replies }) => {
             <Reply
               text={
                 currentCharacter === 0
-                  ? replies[currentReplyIndex][character1]
-                  : replies[currentReplyIndex][character2]
+                  ? replies.replies[currentReplyIndex][character1]
+                  : replies.replies[currentReplyIndex][character2]
               }
             />
           </animated.div>
