@@ -45,7 +45,7 @@ export default function ChooseCharacter() {
     },
     {
       name: "Maghzan Zhumabayev",
-      image: "zhumabayev.png",
+      image: "/zhumabayev.png",
       description:
         "Zhumabayev Magzhan Bekenovich was the well-known poet, one of the bright stars which have appeared in a firmament of the Kazakh literature at the beginning of the XX century. ",
     },
@@ -113,9 +113,12 @@ export default function ChooseCharacter() {
         <>
           <div className="my-2 flex content-between items-center gap-10">
             <div onClick={() => setFirstSelect(true)} className="h-60">
-              <img
-                className="h-60 w-auto"
+              <Image
+                // className="h-60 w-auto"
+                alt={firstCharacter ? firstCharacter.name : "First Character"}
                 src={firstCharacter ? firstCharacter.image : "/unknown.png"}
+                height={240}
+                width={180}
               />
             </div>
             <div className="flex flex-col gap-4">
@@ -134,9 +137,11 @@ export default function ChooseCharacter() {
               </button>
             </div>
             <div onClick={() => setSecondSelect(true)}>
-              <img
-                className="h-60 w-auto"
+              <Image
+                alt={secondCharacter ? secondCharacter.name : "unknown.png"}
                 src={secondCharacter ? secondCharacter.image : "/unknown.png"}
+                height={240}
+                width={180}
               />
             </div>
           </div>
@@ -167,18 +172,17 @@ export default function ChooseCharacter() {
               {data.map((character) => (
                 <div
                   key={character.id}
-                  className="character-profile border-2 border-solid border-black bg-red-400"
+                  className="character-profile border-2 border-solid border-black bg-[#9e9e9e]"
                   onClick={() => getCharacter(character)}
                 >
-                  <img
+                  <Image
                     src={character.image}
                     alt={character.name}
-                    // width={240}
-                    // height={300}
+                    width={240}
+                    height={300}
                   />
-                  {/* <img src={character.image} /> */}
 
-                  <div className="bg-red-200">
+                  <div className="bg-red-400">
                     <p className="text-center font-bold uppercase">
                       {character.name}
                     </p>

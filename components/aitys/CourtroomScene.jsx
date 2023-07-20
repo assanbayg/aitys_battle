@@ -119,7 +119,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
           </animated.div>
         ))}
       </div>
-      <div className="flex text-4xl font-bold text-white">
+      <div className="flex text-4xl font-bold">
         <button onClick={handlePrevClick}>{"<"}</button>
         <button onClick={handleNextClick}>{">"}</button>
       </div>
