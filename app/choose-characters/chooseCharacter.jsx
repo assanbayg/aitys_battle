@@ -69,17 +69,20 @@ export default function ChooseCharacter() {
     }
 
     try {
-      const response = await fetch(`${process.env.BACKEND_URL}/aitys`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/aitys`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topic,
+            first_figure: firstCharacter.name,
+            second_figure: secondCharacter.name,
+          }),
         },
-        body: JSON.stringify({
-          topic,
-          first_figure: firstCharacter.name,
-          second_figure: secondCharacter.name,
-        }),
-      });
+      );
 
       const newReplies = await response.json();
       setReplies(newReplies);
@@ -149,7 +152,7 @@ export default function ChooseCharacter() {
               />
             </div>
           </div>
-          <div className="flex content-around items-center px-60 py-8">
+          <div className="flex content-around items-center px-60 py-8s">
             <div>
               {(selectedCharacter === data.length) === 0 ? (
                 <div>

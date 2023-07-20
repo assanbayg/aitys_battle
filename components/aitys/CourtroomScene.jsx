@@ -25,11 +25,9 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     if ("speechSynthesis" in window) {
       let msg =
         currentCharacter === 0
-          ? new SpeechSynthesisUtterance(
-              replies.replies[currentReplyIndex][character1],
-            )
+          ? new SpeechSynthesisUtterance(replies.replies[currentReplyIndex][character1.name])
           : new SpeechSynthesisUtterance(
-              replies.replies[currentReplyIndex][character2],
+            replies.replies[currentReplyIndex][character2.name],
             );
       msg.onend = function (event) {
         handleNextClick();
@@ -59,10 +57,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   };
 
   const handleNextClick = () => {
-    if (
-      currentReplyIndex === replies.replies.length - 1 &&
-      currentCharacter === 1
-    ) {
+    if (currentReplyIndex === replies.replies.length - 1 && currentCharacter === 1) {
       setCurrentReplyIndex(0);
       setCurrentCharacter(0);
       return;
@@ -99,20 +94,20 @@ const CourtroomScene = ({ character1, character2, replies }) => {
           <animated.div style={style} className="flex items-center gap-x-5">
             {currentCharacter === 0 ? (
               <Character
-                name={character1}
-                image={"/" + character1.split(" ")[1].toLowerCase() + ".png"}
+                name={character1.name}
+                image={character1.image}
               />
             ) : (
               <Character
-                name={character2}
-                image={"/" + character2.split(" ")[1].toLowerCase() + ".png"}
+                name={character2.name}
+                image={character2.image}
               />
             )}
             <Reply
               text={
                 currentCharacter === 0
-                  ? replies.replies[currentReplyIndex][character1]
-                  : replies.replies[currentReplyIndex][character2]
+                  ? replies.replies[currentReplyIndex][character1.name]
+                  : replies.replies[currentReplyIndex][character2.name]
               }
             />
           </animated.div>
