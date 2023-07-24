@@ -3,13 +3,35 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import CourtroomScene from "@/components/aitys/CourtroomScene";
+import Character from "@/components/aitys/Character";
 
 export default function ChooseCharacter() {
   const [firstCharacter, setFirstCharacter] = useState();
+  //   {
+  //   name: "Akhmet Baitursynov",
+  //   image: "/baitursynov.png",
+  //   description:
+  //     "Akhmet Baitursynov was a prominent Kazakh poet, writer, and public figure. He played a crucial role in the development of Kazakh literature and language reform.",
+  // }
   const [secondCharacter, setSecondCharacter] = useState();
   const [firstSelect, setFirstSelect] = useState(true);
   const [secondSelect, setSecondSelect] = useState(false);
-  const [replies, setReplies] = useState([]);
+  const [replies, setReplies] = useState({
+    // replies: [
+    //   {
+    //     "Akhmet Baitursynov":
+    //       "yes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes",
+    //     "Saken Seifullin":
+    //       "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
+    //   },
+    //   {
+    //     "Akhmet Baitursynov":
+    //       "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
+    //     "Saken Seifullin":
+    //       "yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
+    //   },
+    // ],
+  });
   const [topic, setTopic] = useState("");
   const [isGenerated, setIsGenerated] = useState();
   const [data, setData] = useState([
@@ -23,13 +45,13 @@ export default function ChooseCharacter() {
       name: "Alikhan Bukeikhanov",
       image: "/bukeikhanov.png",
       description:
-        "Alikhan Bukeikhanov was a Kazakh composer and musician. He is known for his contributions to Kazakh classical music and his efforts in preserving traditional Kazakh music.",
+        "Alikhan Bukeikhanov is a prominent social and public figure, organizer, and the leader of the national-democratic party Alash, first leader of the Kazakh national “Alash Orda” government.",
     },
     {
       name: "Mirzhakyp Dulatov",
       image: "/dulatov.png",
       description:
-        "Mirzhakyp Dulatov was a Kazakh poet, writer, publicist, teacher, one of the leaders of ‘Alash Orda’ government and the national liberation movement of Kazakhstan. ",
+        "Mirzhakyp Dulatov was a Kazakh poet, writer, publicist, teacher, one of the leaders of “Alash Orda” government and the national liberation movement of Kazakhstan. ",
     },
     {
       name: "Saken Seifullin",
@@ -54,6 +76,10 @@ export default function ChooseCharacter() {
   function onChange(e) {
     setTopic(e.target.value);
   }
+
+  // function getAitys() {
+  //   setIsGenerated(true);
+  // }
 
   async function getAitys(e) {
     e.preventDefault();
@@ -120,12 +146,10 @@ export default function ChooseCharacter() {
       ) : (
         <>
           <div className="my-2 flex content-between items-center gap-10">
-            <div onClick={() => setFirstSelect(true)} className="h-60">
-              <Image
-                alt={firstCharacter ? firstCharacter.name : "First Character"}
-                src={firstCharacter ? firstCharacter.image : "/unknown.png"}
-                height={240}
-                width={180}
+            <div onClick={() => setFirstSelect(true)}>
+              <Character
+                image={firstCharacter ? firstCharacter.image : "/mark.png"}
+                name={firstCharacter ? firstCharacter.name : "First Character"}
               />
             </div>
             <div className="flex flex-col gap-4">
@@ -144,15 +168,16 @@ export default function ChooseCharacter() {
               </button>
             </div>
             <div onClick={() => setSecondSelect(true)}>
-              <Image
-                alt={secondCharacter ? secondCharacter.name : "unknown.png"}
-                src={secondCharacter ? secondCharacter.image : "/unknown.png"}
-                height={240}
-                width={180}
+              <Character
+                second={true}
+                image={secondCharacter ? secondCharacter.image : "/mark.png"}
+                name={
+                  secondCharacter ? secondCharacter.name : "Second character"
+                }
               />
             </div>
           </div>
-          <div className="flex content-around items-center px-60 py-8s">
+          <div className="py-8s flex content-around items-center px-60">
             <div>
               {(selectedCharacter === data.length) === 0 ? (
                 <div>
@@ -161,7 +186,7 @@ export default function ChooseCharacter() {
               ) : (
                 <div
                   key={selectedCharacter.id}
-                  className="mx-5 rounded-3xl border-4  bg-red-50 p-3  "
+                  className="my-8 rounded-3xl border-4  bg-red-50 p-3  "
                 >
                   <h1 className="text-4xl text-fuchsia-950">
                     {selectedCharacter.name}

@@ -7,9 +7,11 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   const dombraSoundRef = useRef(new Audio("/dombra-sound.mp3"));
   const [currentReplyIndex, setCurrentReplyIndex] = useState(0);
   const [currentCharacter, setCurrentCharacter] = useState(0);
+  const [enableRepeat, setEnableRepeat] = useState(false);
 
   const stopSound = () => {
     const dombraSound = dombraSoundRef.current;
+    dombraSoundRef.current.loop = true;
     dombraSound.currentTime = 0;
     dombraSound.pause();
     stopTextToSpeech();
@@ -25,9 +27,11 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     if ("speechSynthesis" in window) {
       let msg =
         currentCharacter === 0
-          ? new SpeechSynthesisUtterance(replies.replies[currentReplyIndex][character1.name])
+          ? new SpeechSynthesisUtterance(
+              replies.replies[currentReplyIndex][character1.name],
+            )
           : new SpeechSynthesisUtterance(
-            replies.replies[currentReplyIndex][character2.name],
+              replies.replies[currentReplyIndex][character2.name],
             );
       msg.onend = function (event) {
         handleNextClick();
@@ -38,7 +42,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
 
   const playSound = () => {
     const dombraSound = dombraSoundRef.current;
-    dombraSound.volume = 0.3;
+    dombraSound.volume = 0.5;
     dombraSound.play();
     textToSpeech();
   };
@@ -47,6 +51,12 @@ const CourtroomScene = ({ character1, character2, replies }) => {
     stopSound();
     playSound();
   }, [currentCharacter, currentReplyIndex]);
+
+  const handleRepeat = () => {
+    setCurrentReplyIndex(0);
+    setCurrentCharacter(0);
+    setEnableRepeat(false);
+  };
 
   const handlePrevClick = () => {
     if (currentReplyIndex === 0) {
@@ -57,9 +67,12 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   };
 
   const handleNextClick = () => {
-    if (currentReplyIndex === replies.replies.length - 1 && currentCharacter === 1) {
-      setCurrentReplyIndex(0);
-      setCurrentCharacter(0);
+    if (
+      currentReplyIndex === replies.replies.length - 1 &&
+      currentCharacter === 1
+    ) {
+      stopSound();
+      setEnableRepeat(true);
       return;
     }
     if (currentCharacter === 0) {
@@ -93,15 +106,9 @@ const CourtroomScene = ({ character1, character2, replies }) => {
         {transitions((style) => (
           <animated.div style={style} className="flex items-center gap-x-5">
             {currentCharacter === 0 ? (
-              <Character
-                name={character1.name}
-                image={character1.image}
-              />
+              <Character name={character1.name} image={character1.image} />
             ) : (
-              <Character
-                name={character2.name}
-                image={character2.image}
-              />
+              <Character name={character2.name} image={character2.image} />
             )}
             <Reply
               text={
@@ -113,10 +120,19 @@ const CourtroomScene = ({ character1, character2, replies }) => {
           </animated.div>
         ))}
       </div>
-      <div className="flex text-4xl font-bold">
-        <button onClick={handlePrevClick}>{"<"}</button>
-        <button onClick={handleNextClick}>{">"}</button>
-      </div>
+      {enableRepeat ? (
+        <button
+          className="my-4 rounded-2xl bg-[#F08A8A] px-6 py-2 text-xl text-white"
+          onClick={handleRepeat}
+        >
+          Start again
+        </button>
+      ) : (
+        <div className="flex text-4xl font-bold">
+          <button onClick={handlePrevClick}>{"<"}</button>
+          <button onClick={handleNextClick}>{">"}</button>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,10 +1,11 @@
 const Footer = () => {
   return (
-    <footer className="w-full bg-yellow-700 py-4 text-amber-50">
+    <footer className="bg-[#593440  w-full py-4 font-headline">
       <div className="container mx-auto text-center">
         <p>
           &copy; {new Date().getFullYear()} Aitys Battle. All rights reserved.
         </p>
+        <p>Made in Kazakhstan.</p>
       </div>
     </footer>
   );

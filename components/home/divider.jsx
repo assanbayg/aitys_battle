@@ -1,8 +1,13 @@
 const Divider = () => {
   return (
-    <div className=" flex">
-      <img src="oyus.png" className="inline-block w-full" />
-    </div>
+    <div
+      className="flex h-40 w-full "
+      style={{
+        backgroundImage: "url('oyus.png')",
+        backgroundRepeat: "repeat-x",
+        backgroundPosition: "center",
+      }}
+    />
   );
 };
 

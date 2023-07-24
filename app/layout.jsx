@@ -1,4 +1,3 @@
-import Footer from "@/components/layout/footer";
 import Nav from "@/components/layout/nav";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
@@ -47,11 +46,11 @@ export default async function RootLayout({ children }) {
         <Suspense fallback="...">
           <Nav />
         </Suspense>
-        <main className="relative flex min-h-screen w-full flex-col items-center justify-center pt-16">
+        <main className="relative flex w-full flex-col items-center justify-center pt-16">
+          {" "}
           {children}
         </main>
         <Analytics />
-        {/* <Footer /> */}
       </body>
     </html>
   );

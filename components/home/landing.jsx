@@ -3,13 +3,17 @@ import Features from "./features";
 import HistoricalFiguresScroll from "./historica-figures-scroll";
 import Divider from "./divider";
 import Link from "next/link";
+import Footer from "@/components/layout/footer";
 
 export default function Landing() {
   return (
     <>
       <div
-        className="relative my-16  h-96 bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('oyu-bg.png')" }}
+        className="my-16 h-96 w-auto bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('oyu-bg.png')",
+          backgroundSize: "contain",
+        }}
       >
         <div className="relative z-10 flex h-full flex-col items-center justify-center space-y-8 px-4 py-16">
           <h1 className="text-center text-4xl font-extrabold tracking-tight  sm:text-5xl md:text-6xl">
@@ -35,8 +39,7 @@ export default function Landing() {
         </div>
       </div>
 
-      {/* <Features /> */}
-      {/* <HistoricalFiguresScroll id="figures" /> */}
+      <Footer />
     </>
   );
 }
