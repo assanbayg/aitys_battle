@@ -9,7 +9,7 @@ export default async function Home() {
   return session !== null ? (
     <Link
       className="rounded-full bg-yellow-800 p-5 px-16 text-5xl text-amber-50 transition-all hover:bg-white hover:text-black"
-      href="/aitys"
+      href="/choose-characters"
     >
       Start
     </Link>
