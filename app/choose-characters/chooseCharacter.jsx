@@ -1,39 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CourtroomScene from "@/components/aitys/CourtroomScene";
 import Character from "@/components/aitys/Character";
+import LoadingComponent from "@/components/shared/icons/loading-component";
 
 export default function ChooseCharacter() {
   const [firstCharacter, setFirstCharacter] = useState();
-  //   {
-  //   name: "Akhmet Baitursynov",
-  //   image: "/baitursynov.png",
-  //   description:
-  //     "Akhmet Baitursynov was a prominent Kazakh poet, writer, and public figure. He played a crucial role in the development of Kazakh literature and language reform.",
-  // }
   const [secondCharacter, setSecondCharacter] = useState();
   const [firstSelect, setFirstSelect] = useState(true);
   const [secondSelect, setSecondSelect] = useState(false);
-  const [replies, setReplies] = useState({
-    // replies: [
-    //   {
-    //     "Akhmet Baitursynov":
-    //       "yes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes",
-    //     "Saken Seifullin":
-    //       "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
-    //   },
-    //   {
-    //     "Akhmet Baitursynov":
-    //       "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
-    //     "Saken Seifullin":
-    //       "yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
-    //   },
-    // ],
-  });
+  const [replies, setReplies] = useState();
   const [topic, setTopic] = useState("");
-  const [isGenerated, setIsGenerated] = useState();
+  const [isGenerated, setIsGenerated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([
     {
       name: "Akhmet Baitursynov",
@@ -77,24 +58,19 @@ export default function ChooseCharacter() {
     setTopic(e.target.value);
   }
 
-  // function getAitys() {
-  //   setIsGenerated(true);
-  // }
-
   async function getAitys(e) {
     e.preventDefault();
 
     if (topic == "") {
-      console.log("SUCK IT");
       return;
     }
 
     if (!firstCharacter || !secondCharacter || !topic) {
-      console.log("Please fill in all the required fields");
       return;
     }
 
     try {
+      setIsLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/aitys`,
         {
@@ -113,16 +89,18 @@ export default function ChooseCharacter() {
       const newReplies = await response.json();
       setReplies(newReplies);
       setIsGenerated(true);
-      console.log(newReplies);
+      // console.log(newReplies);
     } catch (error) {
-      console.log("Error connecting to the backend", error);
+      // console.log("Error connecting to the backend", error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(data[0]);
 
   const getCharacter = (character) => {
-    console.log("Character Data", character);
+    // console.log("Character Data", character);
     if (firstSelect) {
       setFirstCharacter(character);
       setFirstSelect(false);
@@ -155,14 +133,14 @@ export default function ChooseCharacter() {
             <div className="flex flex-col gap-4">
               <p className="text-center text-3xl">Topic</p>
               <input
-                className="p-1"
+                className="rounded-xl px-4 py-2"
                 placeholder="Enter topic"
                 value={topic}
                 onChange={onChange}
               />
               <button
                 onClick={getAitys}
-                className="h-14 rounded-2xl bg-[#F08A8A] text-2xl "
+                className="hover-button h-14 rounded-2xl bg-[#F08A8A] text-2xl"
               >
                 Start
               </button>
@@ -177,12 +155,16 @@ export default function ChooseCharacter() {
               />
             </div>
           </div>
+          {isLoading && (
+            <div className="overlay">
+              <LoadingComponent />{" "}
+            </div>
+          )}
+
           <div className="py-8s flex content-around items-center px-60">
             <div>
-              {(selectedCharacter === data.length) === 0 ? (
-                <div>
-                  <p>Loading...</p>
-                </div>
+              {isLoading ? (
+                <div></div>
               ) : (
                 <div
                   key={selectedCharacter.id}
