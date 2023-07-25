@@ -1,6 +1,4 @@
 import Balancer from "react-wrap-balancer";
-import Features from "./features";
-import HistoricalFiguresScroll from "./historica-figures-scroll";
 import Divider from "./divider";
 import Link from "next/link";
 import Footer from "@/components/layout/footer";
@@ -26,19 +24,19 @@ export default function Landing() {
         </div>
       </div>
       <Divider />
-      <div className="h-full w-full bg-gradient-to-b from-transparent to-rose-300">
+      <div className="flex h-auto w-full items-center bg-gradient-to-b from-transparent to-rose-300 sm:h-[70vh]">
         <div
-          className="relative my-16 h-[400px] bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('alash.png')" }}
+          className="relative my-8 flex h-[60vh] w-full items-center justify-center bg-center bg-no-repeat sm:my-16"
+          style={{
+            backgroundImage: "url('alash.png')",
+            backgroundSize: "contain",
+          }}
         >
-          <div className="relative z-10 flex h-full flex-col items-center justify-center space-y-8 px-4 py-16">
-            <h1 className="text-center text-4xl font-bold italic tracking-tight text-white sm:text-5xl md:text-6xl">
-              Сөздің ең ұлысы - тарих
-            </h1>
-          </div>
+          <h1 className="text-center text-2xl font-bold italic tracking-tight text-white sm:text-4xl md:text-5xl">
+            Сөздің ең ұлысы - тарих
+          </h1>
         </div>
       </div>
-
       <Footer />
     </>
   );
