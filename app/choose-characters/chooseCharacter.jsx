@@ -15,7 +15,7 @@ export default function ChooseCharacter() {
   const [topic, setTopic] = useState("");
   const [isGenerated, setIsGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([
+  const data = [
     {
       name: "Akhmet Baitursynov",
       image: "/baitursynov.png",
@@ -52,7 +52,7 @@ export default function ChooseCharacter() {
       description:
         "Zhumabayev Magzhan Bekenovich was the well-known poet, one of the bright stars which have appeared in a firmament of the Kazakh literature at the beginning of the XX century. ",
     },
-  ]);
+  ];
 
   function onChange(e) {
     setTopic(e.target.value);
@@ -102,11 +102,17 @@ export default function ChooseCharacter() {
   const getCharacter = (character) => {
     // console.log("Character Data", character);
     if (firstSelect) {
+      if (secondCharacter === character) {
+        return;
+      }
       setFirstCharacter(character);
       setFirstSelect(false);
       setSecondSelect(true);
     }
     if (secondSelect) {
+      if (firstCharacter === character) {
+        return;
+      }
       setSecondCharacter(character);
       setSecondSelect(false);
     }
@@ -123,15 +129,31 @@ export default function ChooseCharacter() {
         />
       ) : (
         <>
-          <div className="my-2 flex content-between items-center gap-10">
-            <div onClick={() => setFirstSelect(true)}>
-              <Character
-                image={firstCharacter ? firstCharacter.image : "/mark.png"}
-                name={firstCharacter ? firstCharacter.name : "First Character"}
-              />
+          <div className="my-2 flex flex-col content-between items-center gap-2 md:flex-row md:gap-10">
+            <div className="flex gap-4 md:block md:gap-0">
+              <div onClick={() => setFirstSelect(true)}>
+                <Character
+                  image={firstCharacter ? firstCharacter.image : "/mark.png"}
+                  name={
+                    firstCharacter ? firstCharacter.name : "First Character"
+                  }
+                />
+              </div>
+              <div
+                onClick={() => setSecondSelect(true)}
+                className="block md:hidden"
+              >
+                <Character
+                  second={true}
+                  image={secondCharacter ? secondCharacter.image : "/mark.png"}
+                  name={
+                    secondCharacter ? secondCharacter.name : "Second character"
+                  }
+                />
+              </div>
             </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-center text-3xl">Topic</p>
+            <div className=" flex flex-col gap-2 md:gap-4" id="inputs">
+              <p className=" text-center text-3xl md:block">Topic</p>
               <input
                 className="rounded-xl px-4 py-2"
                 placeholder="Enter topic"
@@ -145,7 +167,10 @@ export default function ChooseCharacter() {
                 Start
               </button>
             </div>
-            <div onClick={() => setSecondSelect(true)}>
+            <div
+              onClick={() => setSecondSelect(true)}
+              className="hidden md:block"
+            >
               <Character
                 second={true}
                 image={secondCharacter ? secondCharacter.image : "/mark.png"}
