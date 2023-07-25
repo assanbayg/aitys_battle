@@ -14,7 +14,7 @@ export default function ChooseCharacter() {
   const [replies, setReplies] = useState();
   const [topic, setTopic] = useState("");
   const [isGenerated, setIsGenerated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([
     {
       name: "Akhmet Baitursynov",
