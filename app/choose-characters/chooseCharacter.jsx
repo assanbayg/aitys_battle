@@ -152,8 +152,8 @@ export default function ChooseCharacter() {
                 />
               </div>
             </div>
-            <div className=" flex flex-col gap-2 md:gap-4" id="inputs">
-              <p className=" text-center text-3xl md:block">Topic</p>
+            <div className="mt-4 flex flex-col gap-2 md:mt-0 md:gap-4">
+              <p className="hidden text-center text-3xl md:block">Topic</p>
               <input
                 className="rounded-xl px-4 py-2"
                 placeholder="Enter topic"
@@ -186,7 +186,7 @@ export default function ChooseCharacter() {
             </div>
           )}
 
-          <div className="py-8s flex content-around items-center px-60">
+          <div className="hidden content-around items-center px-60 py-8 md:flex">
             <div>
               {isLoading ? (
                 <div></div>
@@ -207,7 +207,7 @@ export default function ChooseCharacter() {
           </div>
 
           <main>
-            <section className="grid grid-cols-6">
+            <section className="grid grid-cols-3 md:grid-cols-6">
               {data.map((character) => (
                 <div
                   key={character.id}
@@ -222,7 +222,7 @@ export default function ChooseCharacter() {
                   />
 
                   <div className="bg-red-400">
-                    <p className="text-center font-bold uppercase">
+                    <p className="text-center text-sm font-bold uppercase md:text-base">
                       {character.name}
                     </p>
                   </div>
