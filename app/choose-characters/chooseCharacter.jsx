@@ -8,10 +8,24 @@ import LoadingComponent from "@/components/shared/icons/loading-component";
 
 export default function ChooseCharacter() {
   const [firstCharacter, setFirstCharacter] = useState();
-  const [secondCharacter, setSecondCharacter] = useState();
   const [firstSelect, setFirstSelect] = useState(true);
   const [secondSelect, setSecondSelect] = useState(false);
-  const [replies, setReplies] = useState();
+  const [replies, setReplies] = useState({
+    replies: [
+      {
+        "Akhmet Baitursynov":
+          "yes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes",
+        "Saken Seifullin":
+          "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
+      },
+      {
+        "Akhmet Baitursynov":
+          "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
+        "Saken Seifullin":
+          "yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
+      },
+    ],
+  });
   const [topic, setTopic] = useState("");
   const [isGenerated, setIsGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,6 +72,10 @@ export default function ChooseCharacter() {
     setTopic(e.target.value);
   }
 
+  // function getAitys() {
+  //   setIsGenerated(true);
+  // }
+
   async function getAitys(e) {
     e.preventDefault();
 
@@ -102,7 +120,7 @@ export default function ChooseCharacter() {
   const getCharacter = (character) => {
     // console.log("Character Data", character);
     if (firstSelect) {
-      if (secondCharacter === character) {
+      if (secondCharacter == character) {
         return;
       }
       setFirstCharacter(character);
@@ -110,7 +128,7 @@ export default function ChooseCharacter() {
       setSecondSelect(true);
     }
     if (secondSelect) {
-      if (firstCharacter === character) {
+      if (firstCharacter == character) {
         return;
       }
       setSecondCharacter(character);
@@ -125,6 +143,7 @@ export default function ChooseCharacter() {
         <CourtroomScene
           character1={firstCharacter}
           character2={secondCharacter}
+          topic={topic}
           replies={replies}
         />
       ) : (

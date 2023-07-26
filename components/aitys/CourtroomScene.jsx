@@ -3,7 +3,7 @@ import { useTransition, animated } from "react-spring";
 import Reply from "./Reply";
 import Character from "./Character";
 
-const CourtroomScene = ({ character1, character2, replies }) => {
+const CourtroomScene = ({ character1, character2, topic, replies }) => {
   const dombraSoundRef = useRef(new Audio("/dombra-sound.mp3"));
   const [currentReplyIndex, setCurrentReplyIndex] = useState(0);
   const [currentCharacter, setCurrentCharacter] = useState(0);
@@ -100,11 +100,14 @@ const CourtroomScene = ({ character1, character2, replies }) => {
   });
 
   return (
-    <div className="flex w-screen flex-col items-center bg-[url('/yurt.png')] bg-cover bg-center bg-no-repeat">
-      <h1 className="my-5 text-3xl font-bold">Courtroom Scene</h1>
-      <div className="mb-5 flex">
+    <div className="flex h-screen w-screen flex-col items-center bg-[url('/yurt_phone.png')] bg-cover bg-center bg-no-repeat md:justify-center md:bg-[url('/yurt.png')]">
+      <h1 className="my-5 text-3xl font-bold">{topic}</h1>
+      <div className="mb-5">
         {transitions((style) => (
-          <animated.div style={style} className="flex items-center gap-x-5">
+          <animated.div
+            style={style}
+            className="flex flex-col items-center justify-center gap-y-2 md:flex-row md:gap-x-5"
+          >
             {currentCharacter === 0 ? (
               <Character name={character1.name} image={character1.image} />
             ) : (
@@ -128,7 +131,7 @@ const CourtroomScene = ({ character1, character2, replies }) => {
           Start again
         </button>
       ) : (
-        <div className="flex text-4xl font-bold">
+        <div className=" text-4xl font-bold md:flex">
           <button onClick={handlePrevClick}>{"<"}</button>
           <button onClick={handleNextClick}>{">"}</button>
         </div>

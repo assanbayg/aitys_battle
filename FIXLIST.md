@@ -6,3 +6,4 @@
 - bug when browser is muted 
 - add keypress events
 - fix oyus divider again
+- add oyu border to replies and character component
