@@ -8,6 +8,7 @@ import LoadingComponent from "@/components/shared/icons/loading-component";
 
 export default function ChooseCharacter() {
   const [firstCharacter, setFirstCharacter] = useState();
+  const [secondCharacter, setSecondCharacter] = useState();
   const [firstSelect, setFirstSelect] = useState(true);
   const [secondSelect, setSecondSelect] = useState(false);
   const [replies, setReplies] = useState({
