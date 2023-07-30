@@ -2,6 +2,7 @@ import Balancer from "react-wrap-balancer";
 import Divider from "./divider";
 import Link from "next/link";
 import Footer from "@/components/layout/footer";
+import Start from "./start-button";
 
 export default function Landing() {
   return (
@@ -18,9 +19,6 @@ export default function Landing() {
             GENERATIVE AI MEETS
             <br /> HISTORY OF KAZAKHSTAN
           </h1>
-          <button className="mt-8 rounded-2xl bg-[#F08A8A] px-12 py-3 text-3xl text-white">
-            <Link href="/choose-characters">Start Aitys</Link>
-          </button>
         </div>
       </div>
       <Divider />
