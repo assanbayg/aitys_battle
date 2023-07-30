@@ -49,7 +49,7 @@ export default function UserDropdown({ session }) {
                   onClick={() => signOut()}
                 >
                   <ArrowRightOnRectangleIcon className="h-4 w-4" />
-                  <p className="text-sm">Sign out</p>
+                  <p className="text-sm text-black">Sign out</p>
                 </button>
               )}
             </Menu.Item>
