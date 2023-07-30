@@ -22,7 +22,7 @@ function StartButton({ session }) {
       ) : (
         <button
           className="mt-8 rounded-2xl bg-[#F08A8A] px-12 py-3 text-3xl text-white"
-          onClick={() => setShowSignInModal(true)}
+          // onClick={() => setShowSignInModal(true)}
         >
           Start Aitys
         </button>

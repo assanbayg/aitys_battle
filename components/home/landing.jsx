@@ -19,10 +19,6 @@ export default function Landing() {
             GENERATIVE AI MEETS
             <br /> HISTORY OF KAZAKHSTAN
           </h1>
-          {/* <button className="mt-8 rounded-2xl bg-[#F08A8A] px-12 py-3 text-3xl text-white">
-            <Link href="/choose-characters">Start Aitys</Link>
-          </button> */}
-          <Start />
         </div>
       </div>
       <Divider />
