@@ -36,3 +36,31 @@ h1, h2, h3, h4, h5, h6, p, button {
   align-items: center;
   z-index: 9999; /* Ensure the overlay appears above other elements */
 }
+
+:root {
+  --rotation: 10deg;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(var(--rotation));
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.dombra-animated {
+  animation: rotate 3s ease-in-out infinite;
+}
+
+.dombra-animated.flipped {
+  --rotation: -10deg;
+}
+
+.bg-gradient {
+  background: linear-gradient(to bottom, #593440 0%, #593440 40%, #fca5a5  100%);
+}
