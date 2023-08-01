@@ -7,6 +7,10 @@ export const Contacts = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    if (e.target.user_email.value === "") {
+      alert("Please enter your email address.");
+      return;
+    }
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
