@@ -11,6 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@fontsource/unica-one": "^5.0.5",
     "@fontsource/varela-round": "^5.0.5",
     "@headlessui/react": "^1.7.15",
@@ -20,6 +21,7 @@
     "@vercel/og": "^0.0.26",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
+    "emailjs": "^4.0.2",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "eventsource-parser": "^1.0.0",

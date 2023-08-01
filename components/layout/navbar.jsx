@@ -32,7 +32,7 @@ export default function NavBar({ session }) {
               height="35"
               className="mr-2 rounded-sm"
             ></Image>
-            <p>Aitys Battle (Demo)</p>
+            <p>Aitys Battle</p>
           </Link>
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
@@ -43,7 +43,7 @@ export default function NavBar({ session }) {
                 <Link href="/about">About</Link>
               </li>
               <li>
-                <a href="/figures">Historical Figures</a>
+                <a href="figures">Historical Figures</a>
               </li>
               <li>
                 <a href="/contacts">Contacts</a>
