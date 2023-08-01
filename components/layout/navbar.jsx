@@ -3,7 +3,6 @@ import { useState } from "react";
 import useScroll from "@/lib/hooks/use-scroll";
 import Image from "next/image";
 import Link from "next/link";
-import localFont from "next/font/local";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 
@@ -33,7 +32,7 @@ export default function NavBar({ session }) {
               height="35"
               className="mr-2 rounded-sm"
             ></Image>
-            <p>Aitys Battle</p>
+            <p>Aitys Battle (Demo)</p>
           </Link>
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
@@ -41,16 +40,13 @@ export default function NavBar({ session }) {
                 <a href="/">Home</a>
               </li>
               <li>
-                <Link href="#about">About</Link>
+                <Link href="/about">About</Link>
               </li>
               <li>
-                <a href="#">How It Works</a>
+                <a href="/figures">Historical Figures</a>
               </li>
               <li>
-                <a href="#figures">Historical Figures</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
+                <a href="/contacts">Contacts</a>
               </li>
             </ul>
           </nav>

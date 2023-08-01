@@ -1,11 +1,7 @@
-import Balancer from "react-wrap-balancer";
 import Divider from "./divider";
-import Link from "next/link";
 import Footer from "@/components/layout/footer";
-import Start from "./start-button";
 import About from "./about";
 import Image from "next/image";
-import HowItWorks from "./how-it-works";
 
 export default function Landing() {
   return (
@@ -41,7 +37,6 @@ export default function Landing() {
       </div>
       <Divider />
       <About />
-      <HowItWorks />
       <Divider />
       <div className="flex h-auto w-full items-center  sm:h-[70vh]">
         <div
