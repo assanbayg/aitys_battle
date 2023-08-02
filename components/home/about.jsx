@@ -8,7 +8,7 @@ export default function About() {
   return (
     <>
       <div className="my-8">
-        <div className="first-letter mx-auto hidden w-3/4 items-center rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl md:flex md:gap-10">
+        <div className="first-letter blur-box mx-auto hidden w-3/4 items-center rounded-xl p-10 shadow-xl md:flex md:gap-10">
           <h1 className=" whitespace-nowrap text-3xl font-bold text-yellow-100">
             What is Aitys?
           </h1>
@@ -23,7 +23,7 @@ export default function About() {
             issues.
           </p>
         </div>
-        <div className="first-letter mx-auto mt-8 hidden w-3/4 items-center rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl md:flex md:gap-10">
+        <div className="first-letter blur-box mx-auto mt-8 hidden w-3/4 items-center rounded-xl p-10 shadow-xl md:flex md:gap-10">
           <h1 className="whitespace-nowrap text-3xl font-bold text-yellow-100">
             ...what is
             <br />
@@ -37,7 +37,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="first-letter mx-auto my-8 hidden w-3/4  items-center rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl md:flex md:gap-10">
+      <div className="first-letter blur-box mx-auto my-8 hidden  w-3/4 items-center rounded-xl p-10 shadow-xl md:flex md:gap-10">
         <h1 className=" whitespace-nowrap text-3xl font-bold text-yellow-100">
           How it works
         </h1>

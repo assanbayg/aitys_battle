@@ -5,7 +5,7 @@ import CountUp from "react-countup";
 export default function About() {
   return (
     <div className="my-6 flex ">
-      <div className="mx-24 rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 px-10 py-5 shadow-2xl md:w-1/2">
+      <div className="blur-box mx-24 rounded-xl px-10 py-5 shadow-2xl md:w-1/2">
         <h1 className="text-xl font-extrabold">About this project</h1>
         <p className="text-2xl font-bold text-yellow-100">
           Promotion of Kazakh culture and literature.

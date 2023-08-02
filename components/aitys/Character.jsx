@@ -3,7 +3,7 @@ import Image from "next/image";
 const Character = ({ name, image, second = false }) => {
   return (
     <div>
-      <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-[#B47878] bg-stone-300 md:h-64 md:w-64">
+      <div className="blur-box h-32 w-32 overflow-hidden rounded-full p-5 md:h-64 md:w-64">
         <Image
           src={image}
           alt={name}

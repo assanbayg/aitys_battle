@@ -34,7 +34,7 @@ export const Contacts = () => {
   return (
     <div className="flex flex-col-reverse  items-center justify-center gap-10 py-10  md:flex-row">
       <form
-        className="flex flex-col gap-3 rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl "
+        className="blur-box flex flex-col gap-3 rounded-xl p-10 shadow-xl "
         ref={form}
         onSubmit={sendEmail}
       >
@@ -61,7 +61,7 @@ export const Contacts = () => {
           className="rounded-lg bg-red-300 px-5 py-2 text-white"
         />
       </form>
-      <div className="flex w-auto flex-col rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 shadow-lg md:w-1/2 md:flex-row">
+      <div className="blur-box flex w-auto flex-col rounded-xl shadow-lg md:w-1/2 md:flex-row">
         <div className="flex flex-col p-10">
           <p className="text-3xl text-yellow-100">Meet the developer</p>
           <p>Gauhar Assanbay - 16 years old student who has lack of sleep.</p>

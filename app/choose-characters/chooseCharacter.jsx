@@ -11,22 +11,7 @@ export default function ChooseCharacter() {
   const [secondCharacter, setSecondCharacter] = useState();
   const [firstSelect, setFirstSelect] = useState(true);
   const [secondSelect, setSecondSelect] = useState(false);
-  const [replies, setReplies] = useState({
-    replies: [
-      {
-        "Akhmet Baitursynov":
-          "yes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes\nyes yes yes yes",
-        "Saken Seifullin":
-          "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
-      },
-      {
-        "Akhmet Baitursynov":
-          "No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No\n No No No No",
-        "Saken Seifullin":
-          "yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
-      },
-    ],
-  });
+  const [replies, setReplies] = useState();
   const [topic, setTopic] = useState("");
   const [isGenerated, setIsGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,18 +58,9 @@ export default function ChooseCharacter() {
     setTopic(e.target.value);
   }
 
-  // function getAitys() {
-  //   setIsGenerated(true);
-  // }
-
   async function getAitys(e) {
     e.preventDefault();
-
-    if (topic == "") {
-      return;
-    }
-
-    if (!firstCharacter || !secondCharacter || !topic) {
+    if (!firstCharacter || !secondCharacter || !topic || topic === "") {
       return;
     }
 
@@ -108,18 +84,15 @@ export default function ChooseCharacter() {
       const newReplies = await response.json();
       setReplies(newReplies);
       setIsGenerated(true);
-      // console.log(newReplies);
     } catch (error) {
-      // console.log("Error connecting to the backend", error);
+      return;
     } finally {
       setIsLoading(false);
     }
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(data[0]);
-
   const getCharacter = (character) => {
-    // console.log("Character Data", character);
     if (firstSelect) {
       if (secondCharacter == character) {
         return;
@@ -172,8 +145,10 @@ export default function ChooseCharacter() {
                 />
               </div>
             </div>
-            <div className="mt-4 flex flex-col gap-2 md:mt-0 md:gap-4">
-              <p className="hidden text-center text-3xl md:block">Topic</p>
+            <div className="blur-box mt-4 flex flex-col gap-2 rounded-xl px-5 py-10 md:mt-0 md:gap-4">
+              <p className="hidden text-center text-3xl font-bold md:block">
+                Topic
+              </p>
               <input
                 className="rounded-xl px-4 py-2"
                 placeholder="Enter topic"
@@ -213,7 +188,7 @@ export default function ChooseCharacter() {
               ) : (
                 <div
                   key={selectedCharacter.id}
-                  className="my-8 rounded-3xl border-4  bg-red-50 p-3  "
+                  className="my-8 rounded-3xl border-2 border-white border-opacity-10 bg-white bg-opacity-20 px-10 py-5"
                 >
                   <h1 className="text-4xl text-fuchsia-950">
                     {selectedCharacter.name}
