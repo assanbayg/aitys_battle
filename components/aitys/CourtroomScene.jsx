@@ -100,7 +100,7 @@ const CourtroomScene = ({ character1, character2, topic, replies }) => {
   });
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center bg-[url('/yurt_phone.png')] bg-cover bg-center bg-no-repeat md:justify-center md:bg-[url('/yurt.png')]">
+    <div className="flex max-h-screen min-h-[calc(100vh-4rem)] w-full flex-col items-center bg-[url('/yurt_phone.png')] bg-cover bg-center bg-no-repeat md:justify-center md:bg-[url('/yurt.png')]">
       <h1 className="my-5 text-3xl font-bold">{topic}</h1>
       <div className="mb-5">
         {transitions((style) => (

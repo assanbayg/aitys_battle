@@ -1,10 +1,11 @@
 "use client";
+import Footer from "@/components/layout/footer";
 import Image from "next/image";
 import CountUp from "react-countup";
 
 export default function About() {
   return (
-    <div className="my-6 flex flex-col md:flex-row">
+    <div className="my-6 flex  flex-col md:flex-row">
       <div className="blur-box mx-4 rounded-xl px-4 py-5 shadow-2xl md:mx-24 md:w-1/2 md:px-10">
         <h1 className="text-xl font-extrabold">About this project</h1>
         <p className="text-lg font-bold text-yellow-100 md:text-2xl">
@@ -49,7 +50,7 @@ export default function About() {
           alt="dombra"
         />
       </div>
-    </div>
+    </div>  
   );
 }
 

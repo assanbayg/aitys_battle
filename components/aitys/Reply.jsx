@@ -7,7 +7,7 @@ const Reply = ({ text }) => {
   };
 
   return (
-    <div className="bg-black bg-opacity-20 text-center text-xl">
+    <div className="rounded-xl bg-blue-950 bg-opacity-20 p-5 text-center text-xl">
       {renderTextWithLineBreaks()}
     </div>
   );

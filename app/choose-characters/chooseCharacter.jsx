@@ -188,7 +188,7 @@ export default function ChooseCharacter() {
               ) : (
                 <div
                   key={selectedCharacter.id}
-                  className="my-8 rounded-3xl border-2 border-white border-opacity-10 bg-white bg-opacity-20 px-10 py-5"
+                  className="my-8 rounded-3xl bg-rose-200 px-10 py-5"
                 >
                   <h1 className="text-4xl text-fuchsia-950">
                     {selectedCharacter.name}
@@ -203,10 +203,14 @@ export default function ChooseCharacter() {
 
           <main>
             <section className="grid grid-cols-3 md:grid-cols-6">
-              {data.map((character) => (
+              {data.map((character, index) => (
                 <div
                   key={character.id}
-                  className="character-profile border-2 border-solid border-black bg-[#9e9e9e]"
+                  className={`character-profile border-2 border-solid border-black
+                  bg-[#9e9e9e]
+                  ${index === 0 ? "rounded-l-xl" : ""} ${
+                    index === 5 ? "rounded-r-xl" : ""
+                  }`}
                   onClick={() => getCharacter(character)}
                 >
                   <Image

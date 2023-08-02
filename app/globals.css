@@ -12,6 +12,7 @@
   border: 0.2rem solid rgb(252 211 77);
   cursor: pointer;
   transform: scale(1.1);
+  border-radius: 0.75rem;
 }
 
 .hover-button:hover {
@@ -68,4 +69,8 @@ h1, h2, h3, h4, h5, h6, p, button {
 .blur-box {
   border: 2px solid rgba(255, 255, 255, 0.1);
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.flex-grow {
+  flex-grow: 1;
 }

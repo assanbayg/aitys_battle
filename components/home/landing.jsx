@@ -7,7 +7,7 @@ export default function Landing() {
   return (
     <div className="bg-gradient">
       <div
-        className="my-16 h-96 w-auto bg-center bg-no-repeat md:flex"
+        className="my-16 h-96 w-auto bg-center bg-no-repeat md:flex md:justify-center"
         style={{
           backgroundImage: "url('oyu-bg.png')",
           backgroundSize: "contain",
@@ -15,22 +15,22 @@ export default function Landing() {
       >
         <Image
           src={"/dombra-big-flip.png"}
-          width={360}
-          height={360}
+          width={300}
+          height={300}
           alt="aitys"
           className="dombra-animated flipped hidden md:block"
         />
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center space-y-8 px-4 py-16">
-          <h1 className="text-center text-4xl font-extrabold tracking-tight  sm:text-5xl md:text-6xl">
+          <h1 className="text-center text-4xl font-extrabold  tracking-tight md:text-6xl">
             GENERATIVE AI MEETS
             <br /> HISTORY OF KAZAKHSTAN
           </h1>
         </div>
         <Image
           src={"/dombra-big.png"}
-          width={360}
-          height={360}
+          width={300}
+          height={300}
           alt="aitys"
           className="dombra-animated hidden md:block"
         />
