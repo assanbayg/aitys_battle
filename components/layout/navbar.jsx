@@ -142,26 +142,19 @@ export default function NavBar({ session }) {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                  <a
+                    href="/about"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                  >
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                    How It Works
-                  </a>
-                </li>
-                <li>
                   <a
-                    href="#figures"
+                    href="/contacts"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
-                    Historical Figures
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                    Contact
+                    Contacts
                   </a>
                 </li>
               </ul>

@@ -4,13 +4,13 @@ import CountUp from "react-countup";
 
 export default function About() {
   return (
-    <div className="my-6 flex ">
-      <div className="blur-box mx-24 rounded-xl px-10 py-5 shadow-2xl md:w-1/2">
+    <div className="my-6 flex flex-col md:flex-row">
+      <div className="blur-box mx-4 rounded-xl px-4 py-5 shadow-2xl md:mx-24 md:w-1/2 md:px-10">
         <h1 className="text-xl font-extrabold">About this project</h1>
-        <p className="text-2xl font-bold text-yellow-100">
+        <p className="text-lg font-bold text-yellow-100 md:text-2xl">
           Promotion of Kazakh culture and literature.
         </p>
-        <div className="my-2 w-5/6">
+        <div className="my-2 w-full">
           <p>
             Aitys Battle aims to bring history of Kazakhstan closer to everyone.
             We use the latest artificial intelligence technology to create
@@ -22,8 +22,10 @@ export default function About() {
             culture, and let everyone enjoy and appreciate them.
           </p>
         </div>
-        <p className="text-2xl font-bold text-yellow-100">Future versions</p>
-        <div className="my-2 w-5/6">
+        <p className="text-lg font-bold text-yellow-100 md:text-2xl">
+          Future versions
+        </p>
+        <div className="my-2 w-full">
           <p>
             Aitys Battle continuues to enhances its features for better
             experience. Our vision on future versions: AI advancements will
@@ -39,11 +41,10 @@ export default function About() {
       </div>
       <div className="my-10 flex flex-col items-center justify-center gap-10">
         <Stats />
-
         <Image
           src={"/dombra-big-flip.png"}
-          width={300}
-          height={300}
+          width={200}
+          height={200}
           className="dombra-animated"
           alt="dombra"
         />
@@ -54,7 +55,7 @@ export default function About() {
 
 function Stats() {
   return (
-    <div className="flex gap-8">
+    <div className="flex flex-col gap-8 md:flex-row">
       <div className="flex flex-col items-center">
         <div className="flex">
           <CountUp

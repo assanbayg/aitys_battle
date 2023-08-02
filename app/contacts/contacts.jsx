@@ -58,7 +58,7 @@ export const Contacts = () => {
         <input
           type="submit"
           value="Send"
-          className="rounded-lg bg-red-300 px-5 py-2 text-white"
+          className="rounded-lg bg-[#593440] px-5 py-2 font-bold text-white"
         />
       </form>
       <div className="blur-box flex w-auto flex-col rounded-xl shadow-lg md:w-1/2 md:flex-row">
