@@ -42,7 +42,7 @@ export default async function RootLayout({ children }) {
         className="font-default"
         // {cx(sfPro.variable, inter.variable)}
       >
-        <div className="fixed h-screen w-full bg-[#593440]" />
+        <div className="bg-gradient fixed h-screen w-full " />
         <Suspense fallback="...">
           <Nav />
         </Suspense>

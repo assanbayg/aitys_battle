@@ -1,3 +1,9 @@
+import About from "./about";
+
 export default function Page() {
-  return <p>This is going to be About page</p>;
+  return (
+    <div className="block">
+      <About />
+    </div>
+  );
 }

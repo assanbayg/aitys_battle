@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Image from "next/image";
 
 export const Contacts = () => {
   const form = useRef();
@@ -31,24 +32,25 @@ export const Contacts = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse items-center justify-center gap-10 py-10 md:flex-row">
+    <div className="flex flex-col-reverse  items-center justify-center gap-10 py-10  md:flex-row">
       <form
-        className="flex flex-col gap-3 rounded-md bg-white bg-opacity-10 p-10 shadow-xl"
+        className="flex flex-col gap-3 rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl "
         ref={form}
         onSubmit={sendEmail}
       >
-        <p className="text-3xl">Contact to developer</p>
+        <p className="text-3xl text-yellow-100">Contact to developer</p>
+        <p className="text-xl">Any suggestions and feedback are welcome!</p>
         <div className="flex flex-col gap-3 md:flex-row">
           <input
             type="text"
             name="user_name"
-            placeholder="Name"
+            placeholder="Your name"
             className="rounded-lg"
           />
           <input
             type="email"
             name="user_email"
-            placeholder="Email"
+            placeholder="Your email"
             className="rounded-lg"
           />
         </div>
@@ -59,9 +61,18 @@ export const Contacts = () => {
           className="rounded-lg bg-red-300 px-5 py-2 text-white"
         />
       </form>
-      <div className="flex flex-col items-center justify-center rounded-md bg-white bg-opacity-10 p-10 shadow-lg">
-        <p className="text-3xl">Meet the developer</p>
-        <p>Gauhar Assanbay - 16 years old student who has lack of sleep.</p>
+      <div className="flex w-auto flex-col rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 shadow-lg md:w-1/2 md:flex-row">
+        <div className="flex flex-col p-10">
+          <p className="text-3xl text-yellow-100">Meet the developer</p>
+          <p>Gauhar Assanbay - 16 years old student who has lack of sleep.</p>
+        </div>
+        <Image
+          src={"/me.png"}
+          width={300}
+          height={300}
+          alt="developer"
+          className="hidden md:block"
+        />
       </div>
     </div>
   );

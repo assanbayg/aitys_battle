@@ -61,7 +61,6 @@ export default async function Home() {
             </h1>
           </div>
         </div>
-        <Footer />
       </div>
       <Footer />
     </>

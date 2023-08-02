@@ -42,11 +42,11 @@ export default function NavBar({ session }) {
               <li>
                 <Link href="/about">About</Link>
               </li>
-              <li>
+              {/* <li>
                 <a href="/historical-figures">Historical Figures</a>
-              </li>
+              </li> */}
               <li>
-                <a href="/contacts">Contacts</a>
+                <Link href="/contacts">Contacts</Link>
               </li>
             </ul>
           </nav>

@@ -8,8 +8,8 @@ export default function About() {
   return (
     <>
       <div className="my-8">
-        <div className="first-letter mx-auto hidden w-3/4 items-center rounded-lg bg-opacity-60 p-10 shadow-xl md:flex md:gap-10">
-          <h1 className=" whitespace-nowrap text-3xl font-bold ">
+        <div className="first-letter mx-auto hidden w-3/4 items-center rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl md:flex md:gap-10">
+          <h1 className=" whitespace-nowrap text-3xl font-bold text-yellow-100">
             What is Aitys?
           </h1>
           <p className="text-lg leading-relaxed ">
@@ -23,8 +23,8 @@ export default function About() {
             issues.
           </p>
         </div>
-        <div className="first-letter mx-auto hidden w-3/4 items-center rounded-lg bg-opacity-60 p-10 shadow-xl md:flex md:gap-10">
-          <h1 className="whitespace-nowrap text-3xl font-bold">
+        <div className="first-letter mx-auto mt-8 hidden w-3/4 items-center rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl md:flex md:gap-10">
+          <h1 className="whitespace-nowrap text-3xl font-bold text-yellow-100">
             ...what is
             <br />
             Aitys Battle?
@@ -37,8 +37,10 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="first-letter mx-auto my-8 hidden w-3/4  items-center rounded-lg bg-opacity-60 p-10 shadow-xl md:flex md:gap-10">
-        <h1 className=" whitespace-nowrap text-3xl font-bold">How it works</h1>
+      <div className="first-letter mx-auto my-8 hidden w-3/4  items-center rounded-xl border-2 border-white border-opacity-10 bg-white bg-opacity-10 p-10 shadow-xl md:flex md:gap-10">
+        <h1 className=" whitespace-nowrap text-3xl font-bold text-yellow-100">
+          How it works
+        </h1>
         <p className="text-lg leading-relaxed ">
           Aitys Battle uses generative AI (GPT-3.5) to bring historical figures
           to life and make the aitys feel authentic. Each aitys on any topic is
