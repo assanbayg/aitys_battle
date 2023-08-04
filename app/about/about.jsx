@@ -50,7 +50,7 @@ export default function About() {
           alt="dombra"
         />
       </div>
-    </div>  
+    </div>
   );
 }
 
@@ -74,7 +74,7 @@ function Stats() {
       <div className="flex flex-col items-center">
         <div className="flex">
           <CountUp
-            end={150}
+            end={300}
             duration={10}
             className="text-5xl text-yellow-100"
           />
@@ -87,7 +87,7 @@ function Stats() {
       <div className="flex flex-col items-center">
         <div className="flex">
           <CountUp
-            end={10}
+            end={13}
             duration={10}
             className="text-5xl text-yellow-100"
           />
