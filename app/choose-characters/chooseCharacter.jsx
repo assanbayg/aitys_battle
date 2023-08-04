@@ -8,42 +8,49 @@ import LoadingComponent from "@/components/shared/icons/loading-component";
 
 const data = [
   {
+    id: 0,
     name: "Akhmet Baitursynov",
     image: "/baitursynov.png",
     description:
       "Akhmet Baitursynov was a prominent Kazakh poet, writer, and public figure. He played a crucial role in the development of Kazakh literature and language reform.",
   },
   {
+    id: 1,
     name: "Alikhan Bukeikhanov",
     image: "/bukeikhanov.png",
     description:
       "Alikhan Bukeikhanov is a prominent social and public figure, organizer, and the leader of the national-democratic party Alash, first leader of the Kazakh national “Alash Orda” government.",
   },
   {
+    id: 2,
     name: "Mirzhakyp Dulatov",
     image: "/dulatov.png",
     description:
       "Mirzhakyp Dulatov was a Kazakh poet, writer, publicist, teacher, one of the leaders of “Alash Orda” government and the national liberation movement of Kazakhstan. ",
   },
   {
+    id: 3,
     name: "Saken Seifullin",
     image: "/seifullin.png",
     description:
       "Saken Seyfullin was a pioneer of modern Kazakh literature, poet and writer, and national activist. Founder and first head of the Union of Writers of Kazakhstan, he was the author of controversial literature calling for greater independence of Kazakhs from Soviet and Russian power.",
   },
   {
+    id: 4,
     name: "Sabit Mukanov",
     image: "/mukanov.png",
     description:
       "Sabit Mukanov is a classic of Kazakh literature, a poet, a social activist, an academic, and a head of the Writers' Union of Kazakhstan.",
   },
   {
+    id: 5,
     name: "Maghzan Zhumabayev",
     image: "/zhumabayev.png",
     description:
       "Zhumabayev Magzhan Bekenovich was the well-known poet, one of the bright stars which have appeared in a firmament of the Kazakh literature at the beginning of the XX century. ",
   },
 ];
+
 export default function ChooseCharacter() {
   const [firstCharacter, setFirstCharacter] = useState();
   const [secondCharacter, setSecondCharacter] = useState();
@@ -92,6 +99,7 @@ export default function ChooseCharacter() {
   }
 
   const [selectedCharacter, setSelectedCharacter] = useState(data[0]);
+
   const getCharacter = (character) => {
     if (firstSelect) {
       if (secondCharacter == character) {
@@ -100,8 +108,7 @@ export default function ChooseCharacter() {
       setFirstCharacter(character);
       setFirstSelect(false);
       setSecondSelect(true);
-    }
-    if (secondSelect) {
+    } else if (secondSelect) {
       if (firstCharacter == character) {
         return;
       }
@@ -145,7 +152,7 @@ export default function ChooseCharacter() {
                 />
               </div>
             </div>
-            <div className="blur-box mt-4 flex flex-col gap-2 rounded-xl px-5 py-10 md:mt-0 md:gap-4">
+            <div className="blur-box mt-4 flex flex-col gap-2 rounded-xl px-5 py-8 md:mt-0 md:gap-3">
               <p className="hidden text-center text-3xl font-bold md:block">
                 Topic
               </p>
@@ -161,6 +168,11 @@ export default function ChooseCharacter() {
               >
                 Start
               </button>
+              <p className="text-center text-sm text-white text-opacity-50">
+                Input and output should be in English
+                <br />
+                Айтыс ағылшын тілде болады
+              </p>
             </div>
             <div
               onClick={() => setSecondSelect(true)}
@@ -180,7 +192,9 @@ export default function ChooseCharacter() {
               <LoadingComponent />{" "}
             </div>
           )}
-
+          <div className="overlay">
+            <LoadingComponent />{" "}
+          </div>
           <div className="hidden content-around items-center px-60 py-8 md:flex">
             <div>
               {isLoading ? (

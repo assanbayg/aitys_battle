@@ -22,8 +22,8 @@ export default async function Home() {
         >
           <Image
             src={"/dombra-big-flip.png"}
-            width={360}
-            height={360}
+            width={300}
+            height={300}
             alt="aitys"
             className="dombra-animated flipped hidden md:block"
           />
