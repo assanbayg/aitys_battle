@@ -192,9 +192,6 @@ export default function ChooseCharacter() {
               <LoadingComponent />{" "}
             </div>
           )}
-          <div className="overlay">
-            <LoadingComponent />{" "}
-          </div>
           <div className="hidden content-around items-center px-60 py-8 md:flex">
             <div>
               {isLoading ? (
