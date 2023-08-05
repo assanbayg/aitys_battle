@@ -20,7 +20,6 @@ export default function Landing() {
           alt="aitys"
           className="dombra-animated flipped hidden md:block"
         />
-
         <div className="relative z-10 flex h-full flex-col items-center justify-center space-y-8 px-4 py-16">
           <h1 className="text-center text-4xl font-extrabold  tracking-tight md:text-6xl">
             GENERATIVE AI MEETS
