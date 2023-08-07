@@ -72,7 +72,7 @@ export default function ChooseCharacter() {
     }
 
     try {
-      setIsLoading(true);
+      setIsLoading(true); 
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/aitys`,
         {

@@ -17,7 +17,7 @@ const facts = [
   "The Soviet Union conducted over 450 nuclear tests at the Semipalatinsk Test Site in eastern Kazakhstan from 1949 to 1989, exposing millions of people to radiation and causing severe health and environmental problems.",
   "Kazakhstan is home to diverse ethnic groups, religions and cultures, influenced by its location at the crossroads of Asia and Europe.",
   "Kazakhstan declared its independence from the Soviet Union on December 16, 1991, becoming the last republic to do so.",
-  "Kazakhstan is the only country in the world that has moved its capital twice in the 20th century: from Almaty to Kyzylorda in 1929, and from Kyzylorda to Nur-Sultan (formerly Astana) in 1997.",
+  "Kazakhstan is the only country in the world that has moved its capital twice in the 20th century: from Kyzylorda to Almaty in 1929, and from Kyzylorda to Nur-Sultan (formerly Astana) in 1997.",
   "Kazakhstan is famous for its hospitality and generosity, which are rooted in its nomadic culture and Islamic values. Guests are treated with respect and offered the best food and drinks.",
 ];
 export default function LoadingComponent() {

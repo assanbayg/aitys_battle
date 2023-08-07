@@ -65,6 +65,11 @@ export const Contacts = () => {
         <div className="flex flex-col p-10">
           <p className="text-3xl text-yellow-100">Meet the developer</p>
           <p>Gauhar Assanbay - 16 years old student who has lack of sleep.</p>
+          {process.env.NEXT_PUBLIC_KASPI ? (
+            <p>Korimdik: {process.env.NEXT_PUBLIC_KASPI} (Kaspi)</p>
+          ) : (
+            <></>
+          )}
         </div>
         <Image
           src={"/me.png"}

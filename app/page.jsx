@@ -59,7 +59,7 @@ export default async function Home() {
               Сөздің ең ұлысы - тарих
             </h1>
           </div>
-        </div>
+3        </div>
       </div>
       <Footer />
     </>
