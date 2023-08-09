@@ -72,7 +72,7 @@ export default function ChooseCharacter() {
     }
 
     try {
-      setIsLoading(true); 
+      setIsLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/aitys`,
         {
@@ -133,7 +133,7 @@ export default function ChooseCharacter() {
             <div className="flex gap-4 md:block md:gap-0">
               <div onClick={() => setFirstSelect(true)}>
                 <Character
-                  image={firstCharacter ? firstCharacter.image : "/mark.png"}
+                  image={firstCharacter ? firstCharacter.image : "/mark.gif"}
                   name={
                     firstCharacter ? firstCharacter.name : "First Character"
                   }

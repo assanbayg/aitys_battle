@@ -109,9 +109,15 @@ const CourtroomScene = ({ character1, character2, topic, replies }) => {
             className="flex flex-col items-center justify-center gap-y-2 md:flex-row md:gap-x-5"
           >
             {currentCharacter === 0 ? (
-              <Character name={character1.name} image={character1.image} />
+              <Character
+                name={character1.name}
+                image={character1.image.replace(/\.png$/, ".gif")}
+              />
             ) : (
-              <Character name={character2.name} image={character2.image} />
+              <Character
+                name={character2.name}
+                image={character2.image.replace(/\.png$/, ".gif")}
+              />
             )}
             <Reply
               text={
