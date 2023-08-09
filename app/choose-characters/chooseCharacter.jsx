@@ -133,7 +133,7 @@ export default function ChooseCharacter() {
             <div className="flex gap-4 md:block md:gap-0">
               <div onClick={() => setFirstSelect(true)}>
                 <Character
-                  image={firstCharacter ? firstCharacter.image : "/mark.gif"}
+                  image={firstCharacter ? firstCharacter.image : "/mark.png"}
                   name={
                     firstCharacter ? firstCharacter.name : "First Character"
                   }
